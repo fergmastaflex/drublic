@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://w06bt5t7rq28"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ldxqt"]
+[ext_resource type="Script" path="res://CameraPivot.gd" id="2_vtfnb"]
+[ext_resource type="PackedScene" uid="uid://du4fnry41k0h7" path="res://Models/Sword.dae" id="3_ixdvk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wiqux"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_30j25"]
+
+[sub_resource type="Animation" id="Animation_8csmo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.89921e-14, 1.5708, -0.436333)]
+}
+
+[sub_resource type="Animation" id="Animation_15jlt"]
+resource_name = "attack"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(4.89921e-14, 1.5708, -0.436333), Vector3(0, 1.5708, 0), Vector3(0, 1.5708, -2.0944), Vector3(0, 1.5708, -0.436332)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jvj6"]
+_data = {
+"RESET": SubResource("Animation_8csmo"),
+"attack": SubResource("Animation_15jlt")
+}
+
+[sub_resource type="PrismMesh" id="PrismMesh_hoyhe"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_ldxqt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_wiqux")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_30j25")
+
+[node name="CameraOrbit" type="Node3D" parent="."]
+script = ExtResource("2_vtfnb")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraOrbit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38442, 3.6052)
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrbit/SpringArm3D"]
+transform = Transform3D(0.997551, -0.00609637, 0.0696818, 0, 0.996195, 0.0871557, -0.069948, -0.0869423, 0.993755, 0.999802, 0, 0)
+
+[node name="WeaponHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593115, 0, 0)
+
+[node name="Sword" parent="WeaponHolder" instance=ExtResource("3_ixdvk")]
+transform = Transform3D(-4.92123e-07, -2.29481e-07, 0.15, -0.0633928, 0.135946, -7.34882e-15, -0.135946, -0.0633928, -5.42999e-07, 0, 0, 0)
+
+[node name="SwordAnimator" type="AnimationPlayer" parent="WeaponHolder"]
+libraries = {
+"": SubResource("AnimationLibrary_7jvj6")
+}
+
+[node name="AttackRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -3)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.858252, 1.58821, 0.893247)
+mesh = SubResource("PrismMesh_hoyhe")

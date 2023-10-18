@@ -1,0 +1,46 @@
+extends CharacterBody3D
+
+
+const SPEED = 2.0
+
+var current_hp : int = 20
+var attack_range : float = 1.5
+var attack_rate : float = 1.0
+var damage: int = 1
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var player = get_node("/root/MainScene/Player")
+@onready var scrap_scene = preload("res://scrap.tscn")
+
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	if position.distance_to(player.position) > attack_range:
+		var dir = (player.position - position).normalized()
+		
+		velocity.x = dir.x * SPEED
+		velocity.y = 0
+		velocity.z = dir.z * SPEED
+
+	move_and_slide()
+
+
+func _on_timer_timeout():
+	if position.distance_to(player.position) <= attack_range:
+		player.take_damage(damage)
+
+func take_damage(damageToTake):
+	current_hp -= damageToTake
+	
+	if current_hp <= 0:
+		die()
+
+func die():
+	var scrap = scrap_scene.instantiate()
+	add_sibling(scrap)
+	scrap.position = position
+	queue_free()
