@@ -18,10 +18,15 @@ var vel : Vector3 = Vector3()
 
 @onready var camera = get_node("CameraOrbit")
 @onready var attackRayCast = get_node("AttackRayCast")
-@onready var swordAnimation = get_node("WeaponHolder/SwordAnimator")
+@onready var animation_player = get_node("Visuals/mixamo_base/AnimationPlayer")
+@onready var weaponAnimation = get_node("WeaponHolder/WeaponAnimator")
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+@onready var visuals = get_node("Visuals")
 
-const SPEED = 5.0
+@export var sens_horizontal = 0.5
+@export var sens_vertical = 0.5
+
+const SPEED = 2.8
 const JUMP_VELOCITY = 5.0
 const MAX_SCRAP = 100
 
@@ -29,9 +34,14 @@ const MAX_SCRAP = 100
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	pass
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	ui.update_health_bar(curHp, maxHp)
-#	ui.update_gold_text(gold)
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		rotate_y(deg_to_rad(-event.relative.x*sens_horizontal))
+		camera.rotate_x(deg_to_rad(-event.relative.y*sens_vertical))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-50.0), deg_to_rad(90.0))
 
 func _process(_delta):
 	if Input.is_action_just_pressed("attack"):
@@ -55,9 +65,13 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		if animation_player.current_animation != "walking":
+			animation_player.play("walking")
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		if animation_player.current_animation != "idle":
+			animation_player.play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -115,8 +129,8 @@ func try_attack():
 		return
 	lastAttackTime = Time.get_ticks_msec()
 	
-	swordAnimation.stop()
-	swordAnimation.play("attack")
+	weaponAnimation.stop()
+	weaponAnimation.play("attack")
 	
 	if attackRayCast.is_colliding():
 		if attackRayCast.get_collider().has_method("take_damage"):

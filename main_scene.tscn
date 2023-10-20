@@ -22,4 +22,6 @@ transform = Transform3D(-0.102654, 0, -0.994717, 0, 1, 0, 0.994717, 0, -0.102654
 
 [node name="Room" parent="." instance=ExtResource("4_0dh0n")]
 
+[node name="Enemies" type="Node3D" parent="." groups=["enemies"]]
+
 [connection signal="timeout" from="MobTimer" to="CanvasLayer/UI" method="_on_mob_timer_timeout"]

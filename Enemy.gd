@@ -13,6 +13,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var player = get_node("/root/MainScene/Player")
 @onready var scrap_scene = preload("res://scrap.tscn")
 
+func _ready():
+	add_to_group("enemies")
 
 func _physics_process(delta):
 	# Add the gravity.
