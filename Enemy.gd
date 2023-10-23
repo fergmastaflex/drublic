@@ -3,7 +3,8 @@ extends CharacterBody3D
 
 const SPEED = 2.0
 
-var current_hp : int = 20
+var rng = RandomNumberGenerator.new()
+var current_hp : int = rng.randi_range(5, 10)
 var attack_range : float = 1.5
 var attack_rate : float = 1.0
 var damage: int = 1
@@ -42,7 +43,10 @@ func take_damage(damageToTake):
 		die()
 
 func die():
-	var scrap = scrap_scene.instantiate()
-	add_sibling(scrap)
-	scrap.position = position
+	#drop between 1 and 3 scrap
+	for i in rng.randi_range(1,3):
+		var scrap = scrap_scene.instantiate()
+		add_sibling(scrap)
+		scrap.position = position
+		scrap.position.x += i
 	queue_free()

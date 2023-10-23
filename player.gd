@@ -2,16 +2,18 @@ extends CharacterBody3D
 
 var curHp : int = 10
 var maxHp : int = 10
-var damage : int = 5
+var damage : float = 3.0
 var electronics : int = 0
 var propulsion : int = 0
 var defense : int = 0
 var biotics : int = 0
 var optics : int = 0
-var attackRate : float = 0.3
+var attackRate : float = 1.5
 var lastAttackTime : int = 0
 var jumpCount : int = 0
 var currentScrap : int = 0
+var movement_speed : float = 2.8
+var max_jumps : int = 1
 
 
 var vel : Vector3 = Vector3()
@@ -26,9 +28,14 @@ var vel : Vector3 = Vector3()
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
 
-const SPEED = 2.8
 const JUMP_VELOCITY = 5.0
 const MAX_SCRAP = 100
+const ELECTRONICS_TYPE = "electronics"
+const PROPULSION_TYPE = "propulsion"
+const DEFENSE_TYPE = "defense"
+const OPTICS_TYPE = "optics"
+const BIOTICS_TYPE = "electronics"
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -56,7 +63,7 @@ func _physics_process(delta):
 		jumpCount = 0
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") && (is_on_floor() || jumpCount < 2):
+	if Input.is_action_just_pressed("jump") && (is_on_floor() || jumpCount < max_jumps):
 		velocity.y = JUMP_VELOCITY
 		jumpCount += 1
 
@@ -67,13 +74,13 @@ func _physics_process(delta):
 	if direction:
 		if animation_player.current_animation != "walking":
 			animation_player.play("walking")
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * movement_speed
+		velocity.z = direction.z * movement_speed
 	else:
 		if animation_player.current_animation != "idle":
 			animation_player.play("idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, movement_speed)
+		velocity.z = move_toward(velocity.z, 0, movement_speed)
 
 	move_and_slide()
 	
@@ -89,12 +96,33 @@ func give_scrap(amountToIncrease, type):
 	if currentScrap == MAX_SCRAP:
 		var scrapTotals = {"electronics": electronics,"propulsion": propulsion, "defense": defense, "biotics": biotics, "optics": optics}
 		var powerup_type = find_largest_dict_val(scrapTotals)
-		ui.update_powerup_text(powerup_type)
+		grant_powerup(powerup_type)
 		zero_out_scrap()
 	# this is temporary for debugging purposes!
 	# I think we just want to do a progress bar for the scrap
 	# but am open to feedback there.
 	ui.update_scrap_bar(currentScrap, MAX_SCRAP)
+
+func grant_powerup(powerup_type):
+	var powerup_function = Callable(self, str("grant_", powerup_type))
+	powerup_function.call()
+	ui.update_powerup_text(powerup_type)
+	fill_hp()
+
+func grant_electronics():
+	attackRate -= 0.2
+
+func grant_propulsion():
+	max_jumps += 1
+
+func grant_defense():
+	maxHp += 10
+
+func grant_biotics():
+	movement_speed += 0.3
+
+func grant_optics():
+	damage += 0.5
 
 func zero_out_scrap():
 	currentScrap = 0
@@ -135,5 +163,9 @@ func try_attack():
 	if attackRayCast.is_colliding():
 		if attackRayCast.get_collider().has_method("take_damage"):
 			attackRayCast.get_collider().take_damage(damage)
+
+func fill_hp():
+	curHp = maxHp
+	ui.update_health_bar(curHp, maxHp)
 		
 	

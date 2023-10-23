@@ -17,9 +17,10 @@ func update_powerup_text(powerup):
 	powerupTimer.start()
 	
 func _on_mob_timer_timeout():
-	var enemy = enemy_scene.instantiate() # Replace with function body.
-	enemy.position = Vector3(0.0,1.0,0.0)
-	add_child(enemy)
+	if get_tree().get_nodes_in_group("enemies").size() < 3:
+		var enemy = enemy_scene.instantiate() # Replace with function body.
+		enemy.position = Vector3(0.0,1.0,0.0)
+		add_child(enemy)
 
 func _on_powerup_timer_timeout():
 	powerupAlert.text = ""

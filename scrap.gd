@@ -7,7 +7,7 @@ class_name Scrap
 const SCRAP_TYPES = ["propulsion","defense","biotics","optics","electronics"]
 
 func _ready():
-	scrapAmount = 10
+	scrapAmount = 25
 	scrapType = SCRAP_TYPES[randi() % SCRAP_TYPES.size()]
 	
 func _on_body_entered(body):
