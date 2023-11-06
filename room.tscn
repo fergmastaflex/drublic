@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ct4wu6sqis01c" path="res://textures/4K-carpet_floor_6_glossiness.jpg" id="3_jqq1i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2c8mm"]
-size = Vector3(50, 0, 50)
+size = Vector3(30, 0, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38vki"]
 albedo_texture = ExtResource("1_lq8r0")
@@ -17,7 +17,7 @@ uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uwg1n"]
 material = SubResource("StandardMaterial3D_38vki")
-size = Vector2(50, 50)
+size = Vector2(30, 30)
 
 [node name="Room" type="Node3D"]
 

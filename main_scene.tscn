@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://w06bt5t7rq28" path="res://player.tscn" id="1_lic0p"]
 [ext_resource type="PackedScene" uid="uid://bl7dpux13xvf3" path="res://drone.tscn" id="3_31gmv"]
 [ext_resource type="PackedScene" uid="uid://cft3d6nbppw55" path="res://ui.tscn" id="3_rwi36"]
-[ext_resource type="PackedScene" uid="uid://i5eg68rgm20n" path="res://room.tscn" id="4_0dh0n"]
+[ext_resource type="PackedScene" uid="uid://bn1fqmdv33d30" path="res://lobby.tscn" id="4_wgfep"]
 
 [node name="MainScene" type="Node3D"]
 
@@ -14,18 +14,16 @@
 [node name="Player" parent="." instance=ExtResource("1_lic0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26164, 0)
 
-[node name="MobTimer" type="Timer" parent="."]
-wait_time = 5.129
-autostart = true
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.102654, 0, -0.994717, 0, 1, 0, 0.994717, 0, -0.102654, -7.74801, 3.18495, 0)
-
-[node name="Room" parent="." instance=ExtResource("4_0dh0n")]
-
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Drone" parent="." instance=ExtResource("3_31gmv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.558575, 2.11952, 0.221845)
 
-[connection signal="timeout" from="MobTimer" to="CanvasLayer/UI" method="_on_mob_timer_timeout"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58322, 4.92732)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.06282, -6.25862)
+
+[node name="Lobby" parent="." instance=ExtResource("4_wgfep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73511, 0)
