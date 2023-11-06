@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://4t5s0opbbjpo"]
+
+[ext_resource type="ArrayMesh" uid="uid://dhwhjwmo1lvmr" path="res://Models/WeaponsPack_V.1/WeaponsPack_V.1/OBJ/Shotgun_03.obj" id="1_buanc"]
+[ext_resource type="Script" path="res://scripts/weapons/grenade_launcher.gd" id="1_kwsmy"]
+
+[sub_resource type="Animation" id="Animation_e8t1l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun03:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uu7to"]
+resource_name = "attack"
+length = 0.133337
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shotgun03:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.698132, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q8a7x"]
+_data = {
+"RESET": SubResource("Animation_e8t1l"),
+"attack": SubResource("Animation_uu7to")
+}
+
+[node name="GrenadeLauncher" type="Node3D"]
+script = ExtResource("1_kwsmy")
+
+[node name="Shotgun03" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("1_buanc")
+
+[node name="WeaponAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q8a7x")
+}
+
+[node name="AttackRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -50)

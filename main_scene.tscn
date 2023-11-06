@@ -23,7 +23,7 @@ transform = Transform3D(-0.102654, 0, -0.994717, 0, 1, 0, 0.994717, 0, -0.102654
 
 [node name="Room" parent="." instance=ExtResource("4_0dh0n")]
 
-[node name="Enemies" type="Node3D" parent="." groups=["enemies"]]
+[node name="Enemies" type="Node3D" parent="."]
 
 [node name="Drone" parent="." instance=ExtResource("3_31gmv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.558575, 2.11952, 0.221845)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dd7ga32h57t6"]
 
-[ext_resource type="Script" path="res://scrap.gd" id="1_m3imb"]
+[ext_resource type="Script" path="res://scripts/scrap.gd" id="1_m3imb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0r48b"]
 height = 0.1
