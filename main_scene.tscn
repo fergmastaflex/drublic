@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://w06bt5t7rq28" path="res://player.tscn" id="1_lic0p"]
 [ext_resource type="PackedScene" uid="uid://bl7dpux13xvf3" path="res://drone.tscn" id="3_31gmv"]
 [ext_resource type="PackedScene" uid="uid://cft3d6nbppw55" path="res://ui.tscn" id="3_rwi36"]
-[ext_resource type="PackedScene" uid="uid://bn1fqmdv33d30" path="res://lobby.tscn" id="4_wgfep"]
+[ext_resource type="PackedScene" path="res://lobby.tscn" id="4_wgfep"]
 
 [node name="MainScene" type="Node3D"]
 

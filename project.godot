@@ -13,10 +13,15 @@ config_version=5
 config/name="punk_rock_party"
 run/main_scene="res://main_scene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+config/icon="res://icon.svg"
 
 [display]
 
 window/size/initial_position_type=3
+
+[dotnet]
+
+project/assembly_name="punk_rock_party"
 
 [filesystem]
 

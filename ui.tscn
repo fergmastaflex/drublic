@@ -47,3 +47,38 @@ offset_right = 187.0
 offset_bottom = 99.0
 scale = Vector2(2.612, 1.672)
 label_settings = SubResource("LabelSettings_s7h8d")
+
+[node name="PropulsionCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 53.0
+offset_right = 102.0
+offset_bottom = 76.0
+
+[node name="BallisticsCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 53.0
+offset_right = 102.0
+offset_bottom = 76.0
+
+[node name="SuppressionCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 53.0
+offset_right = 102.0
+offset_bottom = 76.0
+
+[node name="RoboticCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 53.0
+offset_right = 102.0
+offset_bottom = 76.0
+
+[node name="OpticsCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 53.0
+offset_right = 102.0
+offset_bottom = 76.0

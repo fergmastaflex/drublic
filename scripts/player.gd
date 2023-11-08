@@ -9,6 +9,7 @@ var jumpCount : int = 0
 var movement_speed : float = 2.8
 var max_jumps : int = 1
 var vel : Vector3 = Vector3()
+var rng = RandomNumberGenerator.new()
 var type_counts = {
 	"ballistics": 0,
 	"propulsion": 0,
@@ -115,20 +116,31 @@ func fabricate():
 
 func fabricate_weapon():
 	if current_scrap() >= FABRICATE_AMOUNT:
-		set_weapon_base_and_mod()
-		zero_counts()
+		current_weapon_base = random_weighted_scrap()
+		current_weapon_mod = random_weighted_scrap(current_weapon_base)
+	current_scrap() -= 100
 
-func set_weapon_base_and_mod():
-	var highest = -999999
-	var second_highest = highest + 1
+# func set_weapon_base_and_mod():
+# 	var highest = -999999
+# 	var second_highest = highest + 1
+# 	for type in type_counts:
+# 		var val = type_counts[type]
+# 		if val > highest:
+# 			highest = val
+# 			current_weapon_base = type
+# 		elif val > second_highest:
+# 			second_highest = val
+# 			current_weapon_mod = type
+		
+func random_weighted_scrap(skip = ''):
+	var pick
+	var target = rng.randi_range(1,current_scrap())
 	for type in type_counts:
-		var val = type_counts[type]
-		if val > highest:
-			highest = val
-			current_weapon_base = type
-		elif val > second_highest:
-			second_highest = val
-			current_weapon_mod = type
+		if target <= type_counts[type] && type != skip:
+			pick = type
+			target -= type_counts[type]
+	return pick
+		
 
 func set_current_weapon():
 	if current_weapon_base == NONE_TYPE:
@@ -167,14 +179,14 @@ func set_current_weapon():
 	else:
 		sniper.visible = false
 
-func zero_counts():
-	type_counts = {
-		"ballistics": 0,
-		"propulsion": 0,
-		"suppression": 0,
-		"robotics": 0,
-		"optics": 0
-	}
+# func zero_counts():
+# 	type_counts = {
+# 		"ballistics": 0,
+# 		"propulsion": 0,
+# 		"suppression": 0,
+# 		"robotics": 0,
+# 		"optics": 0
+# 	}
 
 func take_damage(damageToTake):
 	curHp -= damageToTake

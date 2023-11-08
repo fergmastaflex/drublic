@@ -4,12 +4,22 @@ extends Control
 @onready var scrap_counter = $ScrapCounter
 @onready var powerup_alert = $PowerupAlert
 @onready var enemy_scene = preload("res://enemy.tscn")
+@onready var propulsion_count = $PropulsionCount
+@onready var robotics_count = $RoboticsCount
+@onready var suppression_count = $SuppressionCount
+@onready var optics_count = $OpticsCount
+@onready var ballistics_count = $RoboticsCount
+
 
 func update_health_bar(currentHealth, maxHealth):
 	healthBar.value = (100 / maxHealth) * currentHealth
 	
 func update_scrap_count(current_scrap):
 	scrap_counter.text = str("Total Scrap: ", current_scrap)
+
+func update_type_total(type_totals):
+	for type in type_totals:
+		var label = get()
 
 func show_fabricate_message():
 	powerup_alert.text = "Press [F] to fabricate!"
