@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://4t5s0opbbjpo"]
 
-[ext_resource type="ArrayMesh" uid="uid://dhwhjwmo1lvmr" path="res://Models/WeaponsPack_V.1/WeaponsPack_V.1/OBJ/Shotgun_03.obj" id="1_buanc"]
 [ext_resource type="Script" path="res://scripts/weapons/grenade_launcher.gd" id="1_kwsmy"]
+[ext_resource type="ArrayMesh" uid="uid://dhwhjwmo1lvmr" path="res://Models/Weapons/WeaponsPack_V.1/OBJ/Shotgun_03.obj" id="2_4dars"]
 
 [sub_resource type="Animation" id="Animation_e8t1l"]
 length = 0.001
@@ -46,12 +46,12 @@ script = ExtResource("1_kwsmy")
 
 [node name="Shotgun03" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = ExtResource("1_buanc")
+mesh = ExtResource("2_4dars")
 
 [node name="WeaponAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_q8a7x")
 }
 
-[node name="AttackRayCast" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -50)
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0583825, -0.465113)

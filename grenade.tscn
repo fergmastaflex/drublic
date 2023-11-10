@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdtcurhcyyarc"]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/grenade.gd" id="1_3p0bv"]
+[ext_resource type="ArrayMesh" uid="uid://b2udg1a0ewd6k" path="res://Models/Weapons/ammo_pistol.obj" id="1_w5ntc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tdbp8"]
+radius = 2.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c1de7"]
+lifetime_randomness = 0.35
+particle_flag_rotate_y = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 7.0
+angle_min = -90.0
+angle_max = 90.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fin2b"]
+albedo_color = Color(1, 0.352941, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c4yca"]
+material = SubResource("StandardMaterial3D_fin2b")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gfaj1"]
+radius = 0.1
+height = 0.3
+
+[node name="Grenade" type="RigidBody3D"]
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_3p0bv")
+
+[node name="DamageRadius" type="Area3D" parent="."]
+
+[node name="DamageCollider" type="CollisionShape3D" parent="DamageRadius"]
+shape = SubResource("SphereShape3D_tdbp8")
+
+[node name="ExplosionParticle" type="GPUParticles3D" parent="DamageRadius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0131392, 0.0195487, -0.0153544)
+emitting = false
+amount = 30
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_c1de7")
+draw_pass_1 = SubResource("SphereMesh_c4yca")
+
+[node name="GrenadeCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.00910518, 0.00896889)
+shape = SubResource("CapsuleShape3D_gfaj1")
+
+[node name="Shell" type="MeshInstance3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, 15, 0, -15, -6.55671e-07, 0, 0, 0)
+mesh = ExtResource("1_w5ntc")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="." to="." method="detonate"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

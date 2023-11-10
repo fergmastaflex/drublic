@@ -36,11 +36,11 @@ var type_counts = {
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
 
-var current_weapon_base = NONE_TYPE
-var current_weapon_mod = NONE_TYPE
+@export var current_weapon_base = NONE_TYPE
+@export var current_weapon_mod = NONE_TYPE
 
 const JUMP_VELOCITY = 5.0
-const FABRICATE_AMOUNT = 100
+const FABRICATE_AMOUNT = 200
 const BALLISTICS_TYPE = "ballistics"
 const PROPULSION_TYPE = "propulsion"
 const OPTICS_TYPE = "optics"

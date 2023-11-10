@@ -42,7 +42,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rkjaa"]
-radius = 0.4
+radius = 0.576782
 
 [node name="Basher" type="Node3D"]
 script = ExtResource("1_6djs4")
@@ -58,5 +58,5 @@ libraries = {
 [node name="Hitbox" type="Area3D" parent="."]
 
 [node name="HitboxCollider" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(-3.40168e-06, 1.23811e-06, -1, 0.34202, 0.939692, 0, 0.939692, -0.34202, -3.61999e-06, 0, 0, -0.412857)
+transform = Transform3D(-3.40168e-06, 1.23811e-06, -1, 0.34202, 0.939692, 0, 0.939692, -0.34202, -3.61999e-06, -0.282067, 0, -0.412857)
 shape = SubResource("SphereShape3D_rkjaa")

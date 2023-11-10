@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://vj0l7ngi25lw"]
 
 [ext_resource type="Script" path="res://scripts/weapons/assault_rifle.gd" id="1_tw3bg"]
-[ext_resource type="ArrayMesh" uid="uid://dnmwnq1vxypfl" path="res://Models/WeaponsPack_V.1/WeaponsPack_V.1/OBJ/AssaultRifle_02.obj" id="2_hqe62"]
+[ext_resource type="ArrayMesh" uid="uid://dnmwnq1vxypfl" path="res://Models/Weapons/WeaponsPack_V.1/OBJ/AssaultRifle_02.obj" id="2_hqe62"]
 
 [sub_resource type="Animation" id="Animation_e8t1l"]
 length = 1.8

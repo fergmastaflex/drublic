@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://chyvffj2sgmhn"]
 
 [ext_resource type="Script" path="res://scripts/weapons/pistol.gd" id="1_l4si2"]
-[ext_resource type="ArrayMesh" uid="uid://ci6jlyibv20s6" path="res://Models/WeaponsPack_V.1/WeaponsPack_V.1/OBJ/Pistol_01.obj" id="2_4ag1t"]
+[ext_resource type="ArrayMesh" uid="uid://ci6jlyibv20s6" path="res://Models/Weapons/WeaponsPack_V.1/OBJ/Pistol_01.obj" id="2_4ag1t"]
 
 [sub_resource type="Animation" id="Animation_e8t1l"]
 length = 1.8
