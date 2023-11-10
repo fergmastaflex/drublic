@@ -7,7 +7,7 @@ var rng = RandomNumberGenerator.new()
 var current_hp : int = rng.randi_range(5, 10)
 var attack_range : float = 1.5
 var attack_rate : float = 1.0
-var damage: int = 1
+var damage: int = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

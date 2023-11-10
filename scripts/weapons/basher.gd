@@ -1,7 +1,7 @@
 extends Weapon
 
 @export var attack_rate = 1
-@export var damage  = 5
+@export var damage  = 1000
 @onready var hitbox = $Hitbox
 
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/scrap.gd" id="1_m3imb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0r48b"]
-height = 0.1
+height = 2.53185
 radius = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nuvbs"]
@@ -15,6 +15,7 @@ height = 0.1
 script = ExtResource("1_m3imb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21697, 0)
 shape = SubResource("CylinderShape3D_0r48b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

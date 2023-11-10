@@ -6,10 +6,12 @@ var damage : float = 3.0
 var attackRate : float = 1.5
 var lastAttackTime : int = 0
 var jumpCount : int = 0
-var movement_speed : float = 2.8
+var walk_speed : float = 2.8
+var run_speed : float = 5.6
 var max_jumps : int = 1
 var vel : Vector3 = Vector3()
 var rng = RandomNumberGenerator.new()
+var current_scrap = 0
 var type_counts = {
 	"ballistics": 0,
 	"propulsion": 0,
@@ -62,7 +64,7 @@ func _input(event):
 func _process(_delta):
 	set_current_weapon()
 
-	if current_scrap() >= FABRICATE_AMOUNT && can_upgrade():
+	if current_scrap >= FABRICATE_AMOUNT && can_upgrade():
 		ui.show_fabricate_message()
 	else:
 		ui.remove_fabricate_message()
@@ -88,21 +90,29 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		if animation_player.current_animation != "walking":
-			animation_player.play("walking")
-		velocity.x = direction.x * movement_speed
-		velocity.z = direction.z * movement_speed
+		if Input.is_action_pressed("sprint"):
+			if animation_player.current_animation != "running":
+				animation_player.play("running")
+			velocity.x = direction.x * run_speed
+			velocity.z = direction.z * run_speed
+		else:
+			if animation_player.current_animation != "walking":
+				animation_player.play("walking")
+			velocity.x = direction.x * walk_speed
+			velocity.z = direction.z * walk_speed
 	else:
 		if animation_player.current_animation != "idle":
 			animation_player.play("idle")
-		velocity.x = move_toward(velocity.x, 0, movement_speed)
-		velocity.z = move_toward(velocity.z, 0, movement_speed)
+		velocity.x = move_toward(velocity.x, 0, walk_speed)
+		velocity.z = move_toward(velocity.z, 0, walk_speed)
 
 	move_and_slide()
 	
-func give_scrap(amountToIncrease, type):	
+func give_scrap(amountToIncrease, type):
+	current_scrap += amountToIncrease
 	type_counts[type] += amountToIncrease
-	ui.update_scrap_count(current_scrap())
+	ui.update_scrap_count(current_scrap)
+	ui.update_type_total(type_counts)
 
 func can_upgrade():
 	return current_weapon_base == NONE_TYPE
@@ -115,32 +125,23 @@ func fabricate():
 	# TODO: add logic for drone and ability upgrade
 
 func fabricate_weapon():
-	if current_scrap() >= FABRICATE_AMOUNT:
+	if current_scrap >= FABRICATE_AMOUNT:
 		current_weapon_base = random_weighted_scrap()
 		current_weapon_mod = random_weighted_scrap(current_weapon_base)
-	current_scrap() -= 100
-
-# func set_weapon_base_and_mod():
-# 	var highest = -999999
-# 	var second_highest = highest + 1
-# 	for type in type_counts:
-# 		var val = type_counts[type]
-# 		if val > highest:
-# 			highest = val
-# 			current_weapon_base = type
-# 		elif val > second_highest:
-# 			second_highest = val
-# 			current_weapon_mod = type
+		current_scrap -= FABRICATE_AMOUNT
+		print(str("base: ",current_weapon_base))
+		print(str("mod: ",current_weapon_mod))
+		fill_hp()
+	zero_counts()
 		
 func random_weighted_scrap(skip = ''):
-	var pick
-	var target = rng.randi_range(1,current_scrap())
+	var pool = []
 	for type in type_counts:
-		if target <= type_counts[type] && type != skip:
-			pick = type
-			target -= type_counts[type]
-	return pick
-		
+		if type == skip:
+			continue
+		for i in range(type_counts[type]):
+			pool.append(type)
+	return pool[randi() % pool.size()]
 
 func set_current_weapon():
 	if current_weapon_base == NONE_TYPE:
@@ -179,14 +180,15 @@ func set_current_weapon():
 	else:
 		sniper.visible = false
 
-# func zero_counts():
-# 	type_counts = {
-# 		"ballistics": 0,
-# 		"propulsion": 0,
-# 		"suppression": 0,
-# 		"robotics": 0,
-# 		"optics": 0
-# 	}
+func zero_counts():
+	type_counts = {
+		"ballistics": 0,
+		"propulsion": 0,
+		"suppression": 0,
+		"robotics": 0,
+		"optics": 0
+	}
+	ui.update_type_total(type_counts)
 
 func take_damage(damageToTake):
 	curHp -= damageToTake
@@ -201,9 +203,6 @@ func die():
 func fill_hp():
 	curHp = maxHp
 	ui.update_health_bar(curHp, maxHp)
-
-func current_scrap():
-	return type_counts.values().reduce(sum, 0)
 
 func sum(accum, number):
 	return accum + number
