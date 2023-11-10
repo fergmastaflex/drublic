@@ -12,5 +12,5 @@ func try_attack(_weapon_mod):
 	var fired_grenade = grenade.instantiate()
 	main_scene.add_child(fired_grenade)
 	fired_grenade.global_transform = $Marker3D.global_transform
-	fired_grenade.apply_central_force(-self.global_transform.basis.z * 1000)
+	fired_grenade.apply_central_force(-self.global_transform.basis.z * 300)
 

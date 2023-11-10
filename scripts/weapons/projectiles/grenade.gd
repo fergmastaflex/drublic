@@ -1,18 +1,25 @@
 extends RigidBody3D
 
-var speed = 10.0
+var shoot = false
+const SPEED = 10.0
 var damage = 30
 var detonated = false
 @onready var explosion_particle = $DamageRadius/ExplosionParticle
 @onready var despawn_timer = $DespawnTimer
 @onready var shell = $Shell
 
+func _ready():
+	set_as_top_level(true)
+
+func _physics_process(_delta):
+	if shoot:
+		apply_impulse(transform.basis.z, -transform.basis.z)
+
 func destroy():
 	queue_free()
 	
 func detonate(_body):
-	if detonated:
-		return
+	shoot = false
 	shell.visible = false
 	detonated = true
 	despawn_timer.start()

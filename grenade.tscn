@@ -28,6 +28,7 @@ radius = 0.1
 height = 0.3
 
 [node name="Grenade" type="RigidBody3D"]
+mass = 0.1
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_3p0bv")
