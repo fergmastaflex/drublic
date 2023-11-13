@@ -21,17 +21,16 @@ var type_counts = {
 }
 
 @onready var camera = get_node("CameraOrbit")
-# @onready var attackRayCast = get_node("AttackRayCast")
 @onready var animation_player = get_node("Visuals/mixamo_base/AnimationPlayer")
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 @onready var visuals = get_node("Visuals")
-@onready var basher = $WeaponHolder/Basher
-@onready var grenade_launcher = $WeaponHolder/GrenadeLauncher
-@onready var sniper = $WeaponHolder/Sniper
-@onready var shield = $WeaponHolder/Shield
-@onready var turret = $WeaponHolder/Turret
-@onready var pistol = $WeaponHolder/Pistol
-@onready var assault_rifle = $WeaponHolder/AssaultRifle
+@onready var basher = $CameraOrbit/WeaponHolder/Basher
+@onready var grenade_launcher = $CameraOrbit/WeaponHolder/GrenadeLauncher
+@onready var sniper = $CameraOrbit/WeaponHolder/Sniper
+@onready var shield = $CameraOrbit/WeaponHolder/Shield
+@onready var turret = $CameraOrbit/WeaponHolder/Turret
+@onready var pistol = $CameraOrbit/WeaponHolder/Pistol
+@onready var assault_rifle = $CameraOrbit/WeaponHolder/AssaultRifle
 
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5

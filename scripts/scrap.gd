@@ -12,8 +12,6 @@ func _ready():
 	add_to_group("scrap")
 	
 func _on_body_entered(body):
-	# I don't love how vague this is, but if this is the best way...
-	# I suppose the first condition acts as a guard, but still
 	if body.name == "Drone" || body.name == "Player":
 		body.give_scrap(scrap_amount, scrap_type)
 		queue_free()

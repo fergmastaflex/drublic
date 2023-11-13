@@ -10,7 +10,7 @@ func try_attack(_weapon_mod):
 	last_attack_time = Time.get_ticks_msec()
 	play_animation()
 	var fired_grenade = grenade.instantiate()
-	main_scene.add_child(fired_grenade)
+	add_sibling(fired_grenade)
 	fired_grenade.global_transform = $Marker3D.global_transform
-	fired_grenade.apply_central_force(-self.global_transform.basis.z * 300)
+	fired_grenade.apply_central_force(-self.global_transform.basis.z * 50)
 
