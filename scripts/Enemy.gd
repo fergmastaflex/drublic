@@ -12,7 +12,7 @@ var damage: int = 0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var player = get_node("/root/MainScene/Player")
-@onready var scrap_scene = preload("res://scrap.tscn")
+@onready var scrap_scene = preload("res://scenes/scrap.tscn")
 
 func _ready():
 	add_to_group("enemies")

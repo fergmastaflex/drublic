@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c84sqxtuqxs0h"]
+
+[ext_resource type="PackedScene" uid="uid://w06bt5t7rq28" path="res://scenes/player.tscn" id="1_lic0p"]
+[ext_resource type="PackedScene" uid="uid://bl7dpux13xvf3" path="res://scenes/drone.tscn" id="3_31gmv"]
+[ext_resource type="PackedScene" uid="uid://cft3d6nbppw55" path="res://scenes/ui.tscn" id="3_rwi36"]
+[ext_resource type="PackedScene" uid="uid://bn1fqmdv33d30" path="res://scenes/lobby.tscn" id="4_wgfep"]
+
+[node name="MainScene" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("3_rwi36")]
+
+[node name="Player" parent="." instance=ExtResource("1_lic0p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26164, 0)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Drone" parent="." instance=ExtResource("3_31gmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.558575, 2.11952, 0.221845)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58322, 4.92732)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.06282, -6.25862)
+
+[node name="Lobby" parent="." instance=ExtResource("4_wgfep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22413, 3.71815, 0.0242968)
+
+[node name="MobTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="MobTimer" to="CanvasLayer/UI" method="_on_mob_timer_timeout"]

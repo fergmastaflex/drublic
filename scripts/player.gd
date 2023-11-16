@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 var curHp : int = 10
 var maxHp : int = 10
-var damage : float = 3.0
 var attackRate : float = 1.5
 var lastAttackTime : int = 0
 var jumpCount : int = 0

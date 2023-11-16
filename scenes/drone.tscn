@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl7dpux13xvf3"]
+
+[ext_resource type="Script" path="res://scripts/drone.gd" id="1_oxnga"]
+[ext_resource type="PackedScene" uid="uid://p83j4yt6mgcm" path="res://Models/recon_drone.escn" id="2_3gd36"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1ctq2"]
+
+[node name="Drone" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_oxnga")
+
+[node name="recon_drone" parent="." instance=ExtResource("2_3gd36")]
+transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+shape = SubResource("SphereShape3D_1ctq2")

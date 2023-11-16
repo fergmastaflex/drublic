@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://i5eg68rgm20n"]
+
+[ext_resource type="Texture2D" uid="uid://dxx35cd1bj66m" path="res://textures/4K-carpet_floor_6_diffuse.jpg" id="1_lq8r0"]
+[ext_resource type="Texture2D" uid="uid://p8b4v4c4y42j" path="res://textures/4K-carpet_floor_6_normal.jpg" id="2_07v43"]
+[ext_resource type="Texture2D" uid="uid://ct4wu6sqis01c" path="res://textures/4K-carpet_floor_6_glossiness.jpg" id="3_jqq1i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2c8mm"]
+size = Vector3(30, 0, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38vki"]
+albedo_texture = ExtResource("1_lq8r0")
+roughness_texture = ExtResource("3_jqq1i")
+roughness_texture_channel = 3
+normal_enabled = true
+normal_texture = ExtResource("2_07v43")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uwg1n"]
+material = SubResource("StandardMaterial3D_38vki")
+size = Vector2(30, 30)
+
+[node name="Room" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_2c8mm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_uwg1n")

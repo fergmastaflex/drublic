@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dosqep7yyin87"]
+
+[ext_resource type="Script" path="res://scripts/weapons/basher.gd" id="1_6djs4"]
+[ext_resource type="PackedScene" uid="uid://du4fnry41k0h7" path="res://Models/Sword.dae" id="1_xk1h5"]
+
+[sub_resource type="Animation" id="Animation_fpo3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.75606e-16, -1.5708, 0.349066)]
+}
+
+[sub_resource type="Animation" id="Animation_t1tto"]
+resource_name = "attack"
+length = 0.5
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.0999, 0.4995),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-4.75606e-16, -1.5708, 0.349066), Vector3(-1.47564, -1.23166, 0.349066), Vector3(-1.47564, -0.330287, 0.349066), Vector3(-1.48944, 0.561545, 0.407881), Vector3(0, -1.5708, 0.349066)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2b0pd"]
+_data = {
+"RESET": SubResource("Animation_fpo3u"),
+"attack": SubResource("Animation_t1tto")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rkjaa"]
+radius = 0.576782
+
+[node name="Basher" type="Node3D"]
+script = ExtResource("1_6djs4")
+
+[node name="Sword" parent="." instance=ExtResource("1_xk1h5")]
+transform = Transform3D(-1.70084e-07, 1.23811e-07, -0.05, 0.017101, 0.0939693, 2.37803e-17, 0.0469846, -0.034202, -1.81e-07, 0, 0, 0.154026)
+
+[node name="WeaponAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2b0pd")
+}
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="HitboxCollider" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(-3.40168e-06, 1.23811e-06, -1, 0.34202, 0.939692, 0, 0.939692, -0.34202, -3.61999e-06, -0.282067, 0, -0.412857)
+shape = SubResource("SphereShape3D_rkjaa")

@@ -3,7 +3,7 @@ extends Control
 @onready var healthBar = get_node("HealthBar")
 @onready var scrap_counter = $ScrapCounter
 @onready var powerup_alert = $PowerupAlert
-@onready var enemy_scene = preload("res://enemy.tscn")
+@onready var enemy_scene = preload("res://scenes/enemy.tscn")
 @onready var propulsion_count = $PropulsionCount
 @onready var robotics_count = $RoboticsCount
 @onready var suppression_count = $SuppressionCount

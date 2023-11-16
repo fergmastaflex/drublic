@@ -1,6 +1,6 @@
 extends Weapon
 
-@onready var grenade = preload("res://grenade.tscn")
+@onready var grenade = preload("res://scenes/weapons/projectiles/grenade.tscn")
 @onready var main_scene = get_node("/root/MainScene")
 var attack_rate = 1.5
 

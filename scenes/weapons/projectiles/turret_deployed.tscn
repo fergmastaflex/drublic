@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://sy52buyjgjdm"]
+
+[ext_resource type="Script" path="res://scripts/turret_deployed.gd" id="1_ko5h7"]
+[ext_resource type="PackedScene" uid="uid://b0ne7o14fhlpq" path="res://sniper.tscn" id="2_dsteh"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_silg2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsaso"]
+size = Vector3(0.25, 0.1, 0.25)
+
+[sub_resource type="Animation" id="Animation_e8t1l"]
+length = 1.8
+step = 0.0333333
+
+[sub_resource type="Animation" id="Animation_uu7to"]
+resource_name = "shoot"
+length = 0.133337
+step = 0.0333333
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q8a7x"]
+_data = {
+"RESET": SubResource("Animation_e8t1l"),
+"shoot": SubResource("Animation_uu7to")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_82144"]
+height = 0.6
+radius = 0.35
+
+[node name="TurretDeployed" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.208265, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ko5h7")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Shaft" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = SubResource("CylinderMesh_silg2")
+skeleton = NodePath("../..")
+
+[node name="Base" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110414, 0)
+mesh = SubResource("BoxMesh_dsaso")
+
+[node name="Sniper" parent="Body" instance=ExtResource("2_dsteh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168472, 0)
+
+[node name="WeaponAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q8a7x")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0340476, 0)
+shape = SubResource("CylinderShape3D_82144")
