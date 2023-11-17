@@ -10,7 +10,7 @@ var current_scrap = 0
 var rng = RandomNumberGenerator.new()
 var type_counts = {}
 
-@onready var player = get_parent()
+@onready var player = get_parent().get_node('Player')
 @onready var holster = player.get_node('CameraOrbit/Holster')
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 

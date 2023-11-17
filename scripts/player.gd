@@ -15,7 +15,7 @@ var max_jumps : int = 1
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 @onready var visuals = get_node("Visuals")
 @onready var holster = $CameraOrbit/Holster
-@onready var drone = $Drone
+@onready var drone = get_parent().get_node('Drone')
 @onready var basher = $Basher
 
 

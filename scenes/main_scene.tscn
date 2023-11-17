@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c84sqxtuqxs0h"]
+[gd_scene load_steps=5 format=3 uid="uid://c84sqxtuqxs0h"]
 
 [ext_resource type="PackedScene" uid="uid://w06bt5t7rq28" path="res://scenes/player.tscn" id="1_lic0p"]
 [ext_resource type="PackedScene" uid="uid://cft3d6nbppw55" path="res://scenes/ui.tscn" id="3_rwi36"]
+[ext_resource type="PackedScene" uid="uid://bl7dpux13xvf3" path="res://scenes/drone.tscn" id="4_nmak6"]
 [ext_resource type="PackedScene" uid="uid://bn1fqmdv33d30" path="res://scenes/lobby.tscn" id="4_wgfep"]
 
 [node name="MainScene" type="Node3D"]
@@ -26,5 +27,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22413, 3.71815, 0.0242968)
 
 [node name="MobTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="Drone" parent="." instance=ExtResource("4_nmak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32096, 2.28023, 0)
 
 [connection signal="timeout" from="MobTimer" to="CanvasLayer/UI" method="_on_mob_timer_timeout"]
