@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp2rptvamvjxr"]
+[gd_scene load_steps=4 format=3 uid="uid://cp2rptvamvjxr"]
 
 [ext_resource type="Script" path="res://scripts/weapons/shield.gd" id="1_758uk"]
+[ext_resource type="PackedScene" uid="uid://chyvffj2sgmhn" path="res://scenes/weapons/pistol.tscn" id="2_41w6s"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ocqqc"]
 
 [node name="Shield" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128589, 0, 0)
 script = ExtResource("1_758uk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 1.4, 0, 0, 0, 0.02, 0, 0, 0)
 mesh = SubResource("BoxMesh_ocqqc")
+
+[node name="Pistol" parent="." instance=ExtResource("2_41w6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.357921, 0, 0)

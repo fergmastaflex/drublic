@@ -7,23 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://b0ne7o14fhlpq" path="res://scenes/weapons/sniper.tscn" id="6_4g2x0"]
 [ext_resource type="PackedScene" uid="uid://bf7fnxvc7eidl" path="res://scenes/weapons/turret.tscn" id="7_w5ew0"]
 
-[node name="Holster" type="Node3D" node_paths=PackedStringArray("current_weapon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295223, 0.3, -0.3)
-visible = false
+[node name="Holster" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329576, 0.3, -0.3)
 script = ExtResource("1_hv57d")
-current_weapon = NodePath("Turret")
 
 [node name="AssaultRifle" parent="." instance=ExtResource("2_04jk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.512801, 0, 0)
 visible = false
 
 [node name="GrenadeLauncher" parent="." instance=ExtResource("3_2fvkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.539626, 0, 0)
 visible = false
 
 [node name="Shield" parent="." instance=ExtResource("5_lykgn")]
 visible = false
 
 [node name="Sniper" parent="." instance=ExtResource("6_4g2x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.477511, 0, 0)
 visible = false
 
 [node name="Turret" parent="." instance=ExtResource("7_w5ew0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548837, 0, 0)
 visible = false

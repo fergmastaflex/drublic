@@ -83,7 +83,8 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("attack"):
 		if Input.is_action_pressed("aim"):
-			holstered_weapon.try_attack()
+			if !holster.empty():
+				holstered_weapon.try_attack()
 		else:
 			basher.try_attack()
 	
