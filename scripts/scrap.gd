@@ -4,11 +4,10 @@ class_name Scrap
 @export var scrap_amount : int = 1
 var scrap_type
 
-const SCRAP_TYPES = ["ballistics","propulsion","suppression","robotics","optics"]
-
 func _ready():
 	scrap_amount = randi_range(10,20)
-	scrap_type = SCRAP_TYPES[randi() % SCRAP_TYPES.size()]
+	scrap_type = Holster.WeaponTypes.keys()[randi() % Holster.WeaponTypes.size()]
+	# scrap_type = Holster.WeaponTypes[random_scrap_type]
 	add_to_group("scrap")
 	
 func _on_body_entered(body):

@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bad3vx28tv5su"]
+[gd_scene load_steps=4 format=3 uid="uid://bf7fnxvc7eidl"]
+
+[ext_resource type="Script" path="res://scripts/weapons/turret.gd" id="1_eedls"]
+[ext_resource type="PackedScene" uid="uid://chyvffj2sgmhn" path="res://scenes/weapons/pistol.tscn" id="2_m1341"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gof4h"]
 
 [node name="Turret" type="Node3D"]
+script = ExtResource("1_eedls")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="DeployUnit" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("BoxMesh_gof4h")
+
+[node name="Pistol" parent="." instance=ExtResource("2_m1341")]

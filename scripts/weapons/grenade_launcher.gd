@@ -4,7 +4,7 @@ extends Weapon
 @onready var main_scene = get_node("/root/MainScene")
 var attack_rate = 1.5
 
-func try_attack(_weapon_mod):
+func try_attack():
 	if !is_visible_in_tree() || still_attacking(attack_rate):
 		return
 	last_attack_time = Time.get_ticks_msec()
@@ -14,3 +14,5 @@ func try_attack(_weapon_mod):
 	fired_grenade.global_transform = $Marker3D.global_transform
 	fired_grenade.apply_central_force(-self.global_transform.basis.z * 50)
 
+func weapon_type():
+	return Holster.WeaponTypes.PROPULSION

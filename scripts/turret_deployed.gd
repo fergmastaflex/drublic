@@ -16,7 +16,7 @@ func _physics_process(delta):
 	if enemies:
 		var enemy = enemies[0]
 		gun.look_at(enemy.global_position, Vector3.UP)
-		gun.try_attack('none')
+		gun.try_attack()
 	body.rotation.x = clamp(body.rotation.x, deg_to_rad(-50.0), deg_to_rad(90.0))
 	
 	move_and_slide()

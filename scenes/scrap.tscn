@@ -12,8 +12,8 @@ bottom_radius = 0.1
 height = 0.1
 
 [node name="Scrap" type="Area3D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_m3imb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

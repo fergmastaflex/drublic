@@ -8,7 +8,7 @@ extends Control
 @onready var robotics_count = $RoboticsCount
 @onready var suppression_count = $SuppressionCount
 @onready var optics_count = $OpticsCount
-@onready var ballistics_count = $BallisticsCount
+@onready var biotics_count = $BioticsCount
 
 
 func update_health_bar(currentHealth, maxHealth):
@@ -17,9 +17,10 @@ func update_health_bar(currentHealth, maxHealth):
 func update_scrap_count(current_scrap):
 	scrap_counter.text = str("Total Scrap: ", current_scrap)
 
-func update_type_total(type_totals):
-	for type in type_totals:
-		get(str(type,"_count")).text = str(type,': ',type_totals[type])
+# func update_type_total(type_totals):
+# 	for type in type_totals:
+# 		var snake_case_type = type.to_snake_case()
+# 		get(str(snake_case_type,"_count")).text = str(snake_case_type,': ',type_totals[type])
 
 func show_fabricate_message():
 	powerup_alert.text = "Press [F] to fabricate!"
