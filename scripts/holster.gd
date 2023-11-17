@@ -15,7 +15,6 @@ class_name Holster
 enum WeaponTypes { BIOTICS, PROPULSION, OPTICS, ROBOTICS, SUPPRESSION }
 	
 func set_current_weapon(type):
-	print(type)
 	match type:
 		WeaponTypes.BIOTICS:
 			current_weapon = assault_rifle

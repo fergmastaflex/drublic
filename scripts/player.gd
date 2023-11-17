@@ -74,7 +74,6 @@ func _physics_process(delta):
 	var holstered_weapon = holster.current_weapon
 
 	if holstered_weapon:
-		print(holstered_weapon)
 		if Input.is_action_pressed("aim"):
 			basher.visible = false
 			holstered_weapon.visible = true
