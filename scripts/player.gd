@@ -110,5 +110,3 @@ func fill_hp():
 
 func sum(accum, number):
 	return accum + number
-		
-	

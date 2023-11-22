@@ -3,14 +3,17 @@ class_name Drone
 
 
 # @onready var enemy = get_node("/root/MainScene/Enemy")
-const SPEED = 8.0
+const ACCELERATION = 1.5
 const FABRICATE_AMOUNT = 200
 var follow_distance : float = 2
 var current_scrap = 0
 var rng = RandomNumberGenerator.new()
 var type_counts = {}
+var is_home : bool
+var _velocity = Vector3.ZERO
 
 @onready var player = get_parent().get_node('Player')
+@onready var drone_starting_point = player.get_node('DroneRestMarker')
 @onready var holster = player.get_node('CameraOrbit/Holster')
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 
@@ -29,20 +32,63 @@ func _process(_delta):
 	if Input.is_action_just_pressed("fabricate"):
 		fabricate_weapon()
 
-func _physics_process(_delta):
-	var scrap = get_tree().get_nodes_in_group("scrap")
-	if scrap:
-		move_towards_target(scrap[0])
+func _physics_process(delta):
+	# var scrap = get_tree().get_nodes_in_group("scrap")
+	# var target
+	var speed
+	var distance = position.distance_to(drone_starting_point.global_position)
+
+	var target = drone_starting_point.global_position
+
+	# print(position.distance_to(drone_starting_point.global_position))
+	# if scrap:
+	# 	target = (scrap[0].global_position - global_position).normalized()
+	# 	# move_towards_target(scrap[0], delta)
+	# else:
+	# 	target = (drone_starting_point.global_position - global_position).normalized()
+
+	if distance < follow_distance:
+		speed = 0.1
 	else:
-		move_towards_target()
+		speed = 9.0
+
+	# velocity = velocity.lerp(target * speed, ACCELERATION * delta)
+	
+
+	# 	
+	# else:
+	# 	print('not home')
+	# 	velocity = player.velocity
+	# 	print('here')
+	# 	velocity = player.velocity
+	# 	rotation = player.rotation
+	
+	
+	velocity.y = 0
+
+	var current_direction = velocity.normalized()
+	var current_speed = velocity.length()
+
+
+	rotation = player.rotation
+	# if current_speed >= speed:
+	# 	velocity = current_direction * speed
+	print(speed)
 	move_and_slide()
 
-func move_towards_target(target = player):
-	var dir = (target.position - position).normalized()
-	if position.distance_to(player.position) > follow_distance:
-		velocity.x = dir.x * SPEED
-		velocity.y = 0
-		velocity.z = dir.z * SPEED
+func move_towards_target(target, delta):
+	
+	var current_direction = velocity.normalized()
+	var current_speed = velocity.length()
+
+	if current_speed >= SPEED:
+		velocity = current_direction * SPEED
+
+	# if position.distance_to(target.position) <= follow_distance:
+	# 	velocity.x += -change_in_vel.x
+	# 	velocity.z += -change_in_vel.z
+	# 	velocity.y = 0
+
 
 func give_scrap(amountToIncrease, type):
 	current_scrap += amountToIncrease
