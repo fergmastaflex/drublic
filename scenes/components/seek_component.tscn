@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpdnl65d102qd"]
+
+[ext_resource type="Script" path="res://scripts/components/seek_component.gd" id="1_pemid"]
+
+[node name="seek_component" type="Node3D"]
+script = ExtResource("1_pemid")
