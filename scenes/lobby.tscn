@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bff61s33hw581" path="res://textures/Bricks064_4K_AmbientOcclusion.jpg" id="2_2w8lk"]
 [ext_resource type="Texture2D" uid="uid://b13k7lpp1jwq2" path="res://textures/Bricks064_4K_NormalDX.jpg" id="3_3r6gl"]
 [ext_resource type="Texture2D" uid="uid://cew7f4tj3wyix" path="res://textures/Bricks064_4K_Roughness.jpg" id="4_slln5"]
-[ext_resource type="PackedScene" uid="uid://i5eg68rgm20n" path="res://room.tscn" id="5_l4nfk"]
+[ext_resource type="PackedScene" uid="uid://i5eg68rgm20n" path="res://scenes/room.tscn" id="5_l4nfk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r50ax"]
 albedo_texture = ExtResource("1_426ro")

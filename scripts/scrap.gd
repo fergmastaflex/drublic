@@ -1,7 +1,8 @@
-extends Area3D
+extends RigidBody3D
 class_name Scrap
 
 @export var scrap_amount : int = 1
+@onready var drone_target = $DroneTarget
 var scrap_type
 
 func _ready():

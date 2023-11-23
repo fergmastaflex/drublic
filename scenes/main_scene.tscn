@@ -26,6 +26,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22413, 3.71815, 0.0242968)
 
 [node name="MobTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="Drone" parent="." instance=ExtResource("4_nmak6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 2.5, 0)

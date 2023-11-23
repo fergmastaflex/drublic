@@ -12,7 +12,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329576, 0.3, -0.3)
 script = ExtResource("1_hv57d")
 
 [node name="AssaultRifle" parent="." instance=ExtResource("2_04jk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.512801, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.459709, 0, -0.634922)
 visible = false
 
 [node name="GrenadeLauncher" parent="." instance=ExtResource("3_2fvkr")]
@@ -20,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.539626, 0, 0)
 visible = false
 
 [node name="Shield" parent="." instance=ExtResource("5_lykgn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.071411, 0, -0.6)
 visible = false
 
 [node name="Sniper" parent="." instance=ExtResource("6_4g2x0")]

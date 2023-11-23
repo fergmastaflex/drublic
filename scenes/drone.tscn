@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl7dpux13xvf3"]
+[gd_scene load_steps=5 format=3 uid="uid://bl7dpux13xvf3"]
 
 [ext_resource type="Script" path="res://scripts/drone.gd" id="1_oxnga"]
 [ext_resource type="PackedScene" uid="uid://p83j4yt6mgcm" path="res://Models/recon_drone.escn" id="2_3gd36"]
-[ext_resource type="PackedScene" uid="uid://dpdnl65d102qd" path="res://scenes/components/seek_component.tscn" id="3_3jo3q"]
 [ext_resource type="PackedScene" uid="uid://bbkcxms88sbc2" path="res://scenes/components/velocity_component.tscn" id="4_pfipu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1ctq2"]
@@ -18,8 +17,6 @@ transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 shape = SubResource("SphereShape3D_1ctq2")
-
-[node name="SeekComponent" parent="." instance=ExtResource("3_3jo3q")]
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_pfipu")]
 max_speed = 8.0
