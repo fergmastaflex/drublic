@@ -43,6 +43,8 @@ _data = {
 
 [node name="GrenadeLauncher" type="Node3D"]
 script = ExtResource("1_kwsmy")
+attack_rate = 1.5
+bullet_velocity = 50
 
 [node name="Shotgun03" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

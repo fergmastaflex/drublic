@@ -10,21 +10,18 @@ class_name Holster
 @onready var turret = $Turret
 @onready var assault_rifle = $AssaultRifle
 @onready var basher = $Basher
-
-# TODO: Put these in some kind of global singleton
-enum WeaponTypes { BIOTICS, PROPULSION, OPTICS, ROBOTICS, SUPPRESSION }
 	
 func set_current_weapon(type):
 	match type:
-		WeaponTypes.BIOTICS:
+		Global.WeaponTypes.BIOTICS:
 			current_weapon = assault_rifle
-		WeaponTypes.PROPULSION:
+		Global.WeaponTypes.PROPULSION:
 			current_weapon = grenade_launcher
-		WeaponTypes.OPTICS:
+		Global.WeaponTypes.OPTICS:
 			current_weapon = sniper
-		WeaponTypes.ROBOTICS:
+		Global.WeaponTypes.ROBOTICS:
 			current_weapon = turret
-		WeaponTypes.SUPPRESSION:
+		Global.WeaponTypes.SUPPRESSION:
 			current_weapon = shield
 
 func empty():

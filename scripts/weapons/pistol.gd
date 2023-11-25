@@ -15,4 +15,4 @@ func try_attack():
 			attack_ray_cast.get_collider().take_damage(damage)
 
 func weapon_type():
-	return Holster.WeaponTypes.ROBOTICS
+	return Global.WeaponTypes.ROBOTICS

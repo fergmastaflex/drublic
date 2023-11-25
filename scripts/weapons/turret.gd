@@ -34,4 +34,4 @@ func is_deployed():
 	return deployed
 
 func weapon_type():
-	return Holster.WeaponTypes.ROBOTICS
+	return Global.WeaponTypes.ROBOTICS

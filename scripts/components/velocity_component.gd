@@ -12,7 +12,7 @@ func apply_force(force):
 	force = (force - velocity).limit_length(max_force)
 	acceleration = force/mass
 	velocity += acceleration
+	
 func move(body):
 	body.velocity = velocity
-	print(velocity)
 	body.move_and_slide()

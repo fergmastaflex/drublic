@@ -58,7 +58,7 @@ func give_scrap(amountToIncrease, type):
 
 func fabricate_weapon():
 	if current_scrap >= FABRICATE_AMOUNT && holster.empty():
-		holster.set_current_weapon(Holster.WeaponTypes[random_weighted_scrap()])
+		holster.set_current_weapon(Global.WeaponTypes[random_weighted_scrap()])
 		# holster.current_weapon.current_weapon_mod = random_weighted_scrap()
 		current_scrap -= FABRICATE_AMOUNT
 		player.fill_hp()
@@ -74,5 +74,5 @@ func random_weighted_scrap(skip = ''):
 	return pool[randi() % pool.size()]
 
 func zero_type_counts():
-	for type in Holster.WeaponTypes:
+	for type in Global.WeaponTypes:
 		type_counts[type] = 0

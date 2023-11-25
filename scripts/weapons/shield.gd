@@ -12,4 +12,4 @@ func try_attack():
 	pistol.try_attack()
 
 func weapon_type():
-	return Holster.WeaponTypes.SUPPRESSION
+	return Global.WeaponTypes.SUPPRESSION

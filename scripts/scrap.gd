@@ -7,8 +7,7 @@ var scrap_type
 
 func _ready():
 	scrap_amount = randi_range(10,20)
-	scrap_type = Holster.WeaponTypes.keys()[randi() % Holster.WeaponTypes.size()]
-	# scrap_type = Holster.WeaponTypes[random_scrap_type]
+	scrap_type = Global.WeaponTypes.keys()[randi() % Global.WeaponTypes.size()]
 	add_to_group("scrap")
 	
 func _on_body_entered(body):
