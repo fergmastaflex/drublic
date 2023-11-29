@@ -4,9 +4,8 @@ extends PropulsionProjectile
 @onready var velocity_component = $VelocityComponentRb
 @onready var seek_component = $SeekComponent
 
-func _ready():
-	super()
-	bullet_velocity = 100
+func _init():
+	bullet_velocity = 20
 
 func _physics_process(_delta):
 	var enemy

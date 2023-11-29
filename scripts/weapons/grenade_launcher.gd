@@ -1,6 +1,9 @@
 extends Weapon
 
-const AMMO_FOLDER = "res://scenes/weapons/projectiles/grenades"
-	
-func base_weapon_type():
-	return Global.WeaponTypes.PROPULSION
+func _process(_delta):
+	set_ammo_scene()
+	if Input.is_action_just_pressed("attack"):
+		try_attack()
+
+func _init():
+	base_weapon_type = Global.WeaponTypes.PROPULSION

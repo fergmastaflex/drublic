@@ -3,7 +3,6 @@ class_name OpticsProjectile
 
 var damage = 25
 var bullet_velocity = 500
-@onready var shell = $Shell
 
 func _ready():
 	set_as_top_level(true)

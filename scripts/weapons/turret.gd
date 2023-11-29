@@ -11,7 +11,7 @@ extends Weapon
 @onready var pistol = $Pistol
 
 var damage = 0
-var deployed = true
+var deployed = false
 
 const TURRET_FOLDER_BASE = "res://scenes/weapons/projectiles/robotics/turrets"
 

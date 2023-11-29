@@ -4,6 +4,7 @@ class_name Weapon
 
 var last_attack_time : int = 0
 var ammo_scene
+var base_weapon_type : Global.WeaponTypes = Global.WeaponTypes.BASE
 @export var attack_rate = 0.0
 @export var ammo_type : Global.WeaponTypes
 
@@ -12,11 +13,6 @@ var ammo_scene
 @onready var marker = $Marker3D
 
 const PROJECTILE_BASE_FOLDER = "res://scenes/weapons/projectiles/"
-
-func _process(_delta):
-	set_ammo_scene()
-	if Input.is_action_just_pressed("attack"):
-		try_attack()
 
 func play_animation():
 	weapon_animation.stop()
@@ -39,15 +35,11 @@ func still_attacking() -> bool:
 		return true
 	return false
 
-func base_weapon_type():
-	# needs to be defined by the child
-	# is there a way to error out if not defined?
-	pass
-
 func set_ammo_scene():
-	if !base_weapon_type():
+	# If the base weapon is set to "BASE," that means there isn't a weapon present
+	if base_weapon_type == Global.WeaponTypes.BASE:
 		return
-	var base_weapon_type_name = Global.enum_to_string(base_weapon_type()).to_snake_case()
+	var base_weapon_type_name = Global.enum_to_string(base_weapon_type).to_snake_case()
 	var ammo_type_name : String
 	if ammo_type:
 		ammo_type_name = Global.WeaponTypes.keys()[ammo_type].to_snake_case()
@@ -56,6 +48,6 @@ func set_ammo_scene():
 
 	# Is there a better way here?
 	var scene_path = str(PROJECTILE_BASE_FOLDER, base_weapon_type_name, "/", ammo_type_name, '.tscn')
-
+	# print(scene_path)
 	ammo_scene = load(scene_path)
 

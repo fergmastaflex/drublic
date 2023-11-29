@@ -3,9 +3,10 @@ class_name PropulsionProjectile
 
 var shoot = false
 const SPEED = 10.0
-var damage = 30
+var damage = 30.0
 var detonated = false
-var bullet_velocity = 50
+var bullet_velocity = 15
+
 @onready var despawn_timer = $DespawnTimer
 @onready var shell = $Shell
 @onready var explosion_particle = preload("res://scenes/weapons/projectiles/propulsion/explosion_particle.tscn")

@@ -1,8 +1,8 @@
 extends RigidBody3D
 class_name RoboticsProjectile
 
-var damage = 10
-var bullet_velocity = 150
+var damage = 10.0
+var bullet_velocity = 50
 @onready var shell = $Shell
 
 func _ready():

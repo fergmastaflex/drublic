@@ -8,13 +8,13 @@ class_name Holster
 @onready var sniper = $Sniper
 @onready var shield = $Shield
 @onready var turret = $Turret
-@onready var assault_rifle = $AssaultRifle
+@onready var sprayer = $Sprayer
 @onready var basher = $Basher
 	
 func set_current_weapon(type):
 	match type:
 		Global.WeaponTypes.BIOTICS:
-			current_weapon = assault_rifle
+			current_weapon = sprayer
 		Global.WeaponTypes.PROPULSION:
 			current_weapon = grenade_launcher
 		Global.WeaponTypes.OPTICS:

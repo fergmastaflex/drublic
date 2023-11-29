@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjk06umpbq6dm"]
+
+[ext_resource type="Script" path="res://scripts/weapons/sprayer.gd" id="1_70kjw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fjksx"]
+radius = 0.1
+height = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_g0mug"]
+size = Vector3(0.1, 0.1, 0.7)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w7qod"]
+
+[sub_resource type="Gradient" id="Gradient_gd71u"]
+offsets = PackedFloat32Array(0, 0.758475, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.783898, 0.783898, 0.783898, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oomtv"]
+gradient = SubResource("Gradient_gd71u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c1de7"]
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, -1)
+spread = 15.22
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_min = 0.2
+color_ramp = SubResource("GradientTexture1D_oomtv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3ubw"]
+albedo_color = Color(1, 0.352941, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c4yca"]
+material = SubResource("StandardMaterial3D_o3ubw")
+radius = 0.1
+height = 0.2
+
+[node name="Sprayer" type="Node3D"]
+script = ExtResource("1_70kjw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.463311, 0.262225)
+mesh = SubResource("CapsuleMesh_fjksx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341045, 0.230245, -0.205988)
+mesh = SubResource("BoxMesh_g0mug")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="DamageCollider" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.333112, 0.23672, -1.66346)
+shape = SubResource("CapsuleShape3D_w7qod")
+
+[node name="FlameParticle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326956, 0.231892, -0.63515)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_c1de7")
+draw_pass_1 = SubResource("SphereMesh_c4yca")

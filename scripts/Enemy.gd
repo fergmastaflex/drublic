@@ -4,7 +4,7 @@ class_name Enemy
 const SPEED = 2.0
 
 var rng = RandomNumberGenerator.new()
-var current_hp : int = rng.randi_range(5, 10)
+var current_hp : float = rng.randf_range(20.0, 50.0)
 var attack_range : float = 1.5
 var attack_rate : float = 1.0
 var damage: int = 0
