@@ -1,5 +1,5 @@
 extends RigidBody3D
-class_name GrenadeBase
+class_name PropulsionProjectile
 
 var shoot = false
 const SPEED = 10.0
@@ -14,7 +14,7 @@ var bullet_velocity = 50
 func _ready():
 	set_as_top_level(true)
 	
-func detonate(_body):
+func give_damage(_body):
 	var new_explosion_particle = explosion_particle.instantiate()
 	main_scene.add_child(new_explosion_particle)
 	new_explosion_particle.position = position

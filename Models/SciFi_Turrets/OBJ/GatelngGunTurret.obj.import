@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://chjrb4wr4hewu"
+path="res://.godot/imported/GatelngGunTurret.obj-937b99c489d5ea472a78b444d7d09532.mesh"
+
+[deps]
+
+files=["res://.godot/imported/GatelngGunTurret.obj-937b99c489d5ea472a78b444d7d09532.mesh"]
+
+source_file="res://Models/SciFi_Turrets/OBJ/GatelngGunTurret.obj"
+dest_files=["res://.godot/imported/GatelngGunTurret.obj-937b99c489d5ea472a78b444d7d09532.mesh", "res://.godot/imported/GatelngGunTurret.obj-937b99c489d5ea472a78b444d7d09532.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

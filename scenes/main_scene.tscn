@@ -12,7 +12,7 @@
 [node name="UI" parent="CanvasLayer" instance=ExtResource("3_rwi36")]
 
 [node name="Player" parent="." instance=ExtResource("1_lic0p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26164, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26164, 2.73876)
 
 [node name="Enemies" type="Node3D" parent="."]
 

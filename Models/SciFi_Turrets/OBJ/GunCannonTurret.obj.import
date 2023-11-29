@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c261388q55v0e"
+path="res://.godot/imported/GunCannonTurret.obj-7c12e5493fdd0c5f69097d4f980f9d7e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/GunCannonTurret.obj-7c12e5493fdd0c5f69097d4f980f9d7e.mesh"]
+
+source_file="res://Models/SciFi_Turrets/OBJ/GunCannonTurret.obj"
+dest_files=["res://.godot/imported/GunCannonTurret.obj-7c12e5493fdd0c5f69097d4f980f9d7e.mesh", "res://.godot/imported/GunCannonTurret.obj-7c12e5493fdd0c5f69097d4f980f9d7e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -45,7 +45,6 @@ _data = {
 [node name="AssaultRifle" type="Node3D"]
 script = ExtResource("1_7ehw1")
 attack_rate = 0.1
-bullet_velocity = null
 
 [node name="WeaponAnimation" type="AnimationPlayer" parent="."]
 libraries = {

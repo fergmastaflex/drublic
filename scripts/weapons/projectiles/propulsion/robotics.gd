@@ -1,4 +1,4 @@
-extends GrenadeBase
+extends PropulsionProjectile
 
 @onready var magnet_radius = $MagnetRadius
 @onready var velocity_component = $VelocityComponentRb

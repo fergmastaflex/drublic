@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://nu0dtduqj043"
+path="res://.godot/imported/EMPTurret1.obj-f43d648fbe3106ccdc2ef5cf884922f6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/EMPTurret1.obj-f43d648fbe3106ccdc2ef5cf884922f6.mesh"]
+
+source_file="res://Models/SciFi_Turrets/OBJ/EMPTurret1.obj"
+dest_files=["res://.godot/imported/EMPTurret1.obj-f43d648fbe3106ccdc2ef5cf884922f6.mesh", "res://.godot/imported/EMPTurret1.obj-f43d648fbe3106ccdc2ef5cf884922f6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

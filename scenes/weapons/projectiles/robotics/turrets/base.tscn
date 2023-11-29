@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmqmkphw3fdgd"]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/robotics/turrets/base.gd" id="1_t008f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fdkj5"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trrnt"]
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_iam4s"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_xbegh"]
+size = Vector3(0.1, 0.1, 0.8)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4ka3k"]
+height = 1.0
+radius = 0.4
+
+[node name="BaseTurret" type="Node3D"]
+script = ExtResource("1_t008f")
+
+[node name="Body" type="CharacterBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0910389, 0)
+mesh = SubResource("BoxMesh_fdkj5")
+skeleton = NodePath("../Gun")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.351457, 0)
+mesh = SubResource("BoxMesh_trrnt")
+skeleton = NodePath("../Gun")
+
+[node name="Gun" type="Node3D" parent="Body"]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Body/Gun"]
+transform = Transform3D(1, 0, 0, 0, 0.00289721, 0.999996, 0, -0.999996, 0.00289722, 0, 0.649282, 0.183655)
+mesh = SubResource("CylinderMesh_iam4s")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Body/Gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.623421, -0.280612)
+mesh = SubResource("BoxMesh_xbegh")
+
+[node name="Marker3D" type="Marker3D" parent="Body/Gun"]
+transform = Transform3D(-0.00289719, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.00289719, -4.43913e-05, 0.599648, -0.72605)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_4ka3k")

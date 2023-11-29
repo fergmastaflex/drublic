@@ -9,6 +9,7 @@ var ammo_scene
 
 @onready var weapon_animation = $WeaponAnimation
 @onready var holster = get_parent()
+@onready var marker = $Marker3D
 
 const PROJECTILE_BASE_FOLDER = "res://scenes/weapons/projectiles/"
 
@@ -26,11 +27,12 @@ func try_attack():
 		return
 	last_attack_time = Time.get_ticks_msec()
 	play_animation()
-	var projectile = ammo_scene.instantiate()
-	add_sibling(projectile)
-	projectile.global_transform = $Marker3D.global_transform
-	print(projectile.bullet_velocity)
-	projectile.apply_central_force(-self.global_transform.basis.z * projectile.bullet_velocity)
+	if ammo_scene:
+		var projectile = ammo_scene.instantiate()
+		projectile.set_as_top_level(true)
+		add_sibling(projectile)
+		projectile.global_transform = marker.global_transform
+		projectile.apply_central_impulse(-self.global_transform.basis.z * projectile.bullet_velocity)
 
 func still_attacking() -> bool:
 	if (Time.get_ticks_msec() - last_attack_time) < (attack_rate * 1000):
@@ -54,6 +56,6 @@ func set_ammo_scene():
 
 	# Is there a better way here?
 	var scene_path = str(PROJECTILE_BASE_FOLDER, base_weapon_type_name, "/", ammo_type_name, '.tscn')
-		
+
 	ammo_scene = load(scene_path)
 

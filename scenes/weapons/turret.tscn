@@ -9,7 +9,8 @@
 script = ExtResource("1_eedls")
 
 [node name="DeployUnit" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.300229, 0.289435, -0.102413)
 mesh = SubResource("BoxMesh_gof4h")
 
 [node name="Pistol" parent="." instance=ExtResource("2_m1341")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286385, 0.339435, 0)

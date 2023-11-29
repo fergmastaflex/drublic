@@ -46,7 +46,6 @@ radius = 0.576782
 
 [node name="Basher" type="Node3D"]
 script = ExtResource("1_6djs4")
-bullet_velocity = null
 
 [node name="Sword" parent="." instance=ExtResource("1_xk1h5")]
 transform = Transform3D(-1.70084e-07, 1.23811e-07, -0.05, 0.017101, 0.0939693, 2.37803e-17, 0.0469846, -0.034202, -1.81e-07, 0, 0, 0.154026)

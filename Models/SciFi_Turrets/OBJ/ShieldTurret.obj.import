@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b0o0q58qyf3iw"
+path="res://.godot/imported/ShieldTurret.obj-ce3006f7b75becf8efa1f4b2f3cc0758.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ShieldTurret.obj-ce3006f7b75becf8efa1f4b2f3cc0758.mesh"]
+
+source_file="res://Models/SciFi_Turrets/OBJ/ShieldTurret.obj"
+dest_files=["res://.godot/imported/ShieldTurret.obj-ce3006f7b75becf8efa1f4b2f3cc0758.mesh", "res://.godot/imported/ShieldTurret.obj-ce3006f7b75becf8efa1f4b2f3cc0758.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
