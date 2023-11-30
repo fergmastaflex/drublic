@@ -5,9 +5,6 @@ extends Weapon
 var attack_rate = 0.1
 var damage = 1
 
-# # The input check is different for auto fire
-# func _process(_delta):
-
 func try_attack():
 	pistol.try_attack()
 

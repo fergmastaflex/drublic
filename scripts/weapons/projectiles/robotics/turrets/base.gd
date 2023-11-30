@@ -6,11 +6,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 const ROBOTICS_PROJECTILE_BASE_FOLDER = "res://scenes/weapons/projectiles/robotics/turret_projectiles/base.tscn"
 
-# func _init():
-# 	attack_rate = 1.0
-# 	ammo_scene = load(ROBOTICS_PROJECTILE_BASE_FOLDER)
-# 	# marker = $Body/Gun/Marker3D
-
 func _ready():
 	set_as_top_level(true)
 	marker = $Body/Gun/Marker3D

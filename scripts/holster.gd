@@ -1,7 +1,6 @@
 extends Node3D
 class_name Holster
 
-# @export var current_weapon_mod : String
 @export var current_weapon : Weapon
 
 @onready var grenade_launcher = $GrenadeLauncher
