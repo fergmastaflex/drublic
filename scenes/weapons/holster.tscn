@@ -8,7 +8,7 @@
 [node name="Holster" type="Node3D" node_paths=PackedStringArray("current_weapon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329576, 0.3, -0.3)
 script = ExtResource("1_hv57d")
-current_weapon = NodePath("Sprayer")
+current_weapon = NodePath("GrenadeLauncher")
 
 [node name="Sprayer" parent="." instance=ExtResource("4_xddyt")]
 visible = false

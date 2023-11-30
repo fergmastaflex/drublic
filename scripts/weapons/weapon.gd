@@ -48,6 +48,6 @@ func set_ammo_scene():
 
 	# Is there a better way here?
 	var scene_path = str(PROJECTILE_BASE_FOLDER, base_weapon_type_name, "/", ammo_type_name, '.tscn')
-	# print(scene_path)
+	
 	ammo_scene = load(scene_path)
 

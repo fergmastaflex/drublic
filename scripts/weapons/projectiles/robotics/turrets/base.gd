@@ -43,7 +43,5 @@ func try_attack():
 		var projectile = ammo_scene.instantiate()
 		add_sibling(projectile)
 		
-		print(projectile)
-		print(marker)
 		projectile.global_transform = marker.global_transform
 		projectile.apply_central_impulse(-gun.global_transform.basis.z * projectile.bullet_velocity)
