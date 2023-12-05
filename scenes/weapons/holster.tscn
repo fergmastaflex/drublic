@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddje6uns16bld"]
+[gd_scene load_steps=7 format=3 uid="uid://ddje6uns16bld"]
 
 [ext_resource type="Script" path="res://scripts/holster.gd" id="1_hv57d"]
 [ext_resource type="PackedScene" uid="uid://dbmxn7766ovgv" path="res://scenes/weapons/grenade_launcher.tscn" id="2_sunef"]
 [ext_resource type="PackedScene" uid="uid://bf7fnxvc7eidl" path="res://scenes/weapons/turret.tscn" id="3_gu7n4"]
 [ext_resource type="PackedScene" uid="uid://bjk06umpbq6dm" path="res://scenes/weapons/sprayer.tscn" id="4_xddyt"]
+[ext_resource type="PackedScene" uid="uid://cp2rptvamvjxr" path="res://scenes/weapons/shield.tscn" id="5_67ooj"]
+[ext_resource type="PackedScene" uid="uid://b0ne7o14fhlpq" path="res://scenes/weapons/sniper.tscn" id="6_ytmns"]
 
 [node name="Holster" type="Node3D" node_paths=PackedStringArray("current_weapon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329576, 0.3, -0.3)
@@ -16,7 +18,13 @@ attack_rate = 0.8
 
 [node name="GrenadeLauncher" parent="." instance=ExtResource("2_sunef")]
 visible = false
-ammo_type = 4
+ammo_type = 3
 
 [node name="Turret" parent="." instance=ExtResource("3_gu7n4")]
+visible = false
+
+[node name="Shield" parent="." instance=ExtResource("5_67ooj")]
+visible = false
+
+[node name="Sniper" parent="." instance=ExtResource("6_ytmns")]
 visible = false

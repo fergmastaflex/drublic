@@ -22,4 +22,10 @@ mesh = SubResource("BoxMesh_bdvy6")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="StunLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2485, 0)
+visible = false
+outline_modulate = Color(0, 0, 0, 0)
+text = "Stunned!"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

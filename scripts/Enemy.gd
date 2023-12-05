@@ -8,19 +8,27 @@ var current_hp : float = rng.randf_range(20.0, 50.0)
 var attack_range : float = 1.5
 var attack_rate : float = 1.0
 var damage: int = 0
+var is_stunned = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var player = get_node("/root/MainScene/Player")
 @onready var scrap_scene = preload("res://scenes/scrap.tscn")
+@onready var stun_label = $StunLabel
 
 func _ready():
 	add_to_group("enemies")
 
 func _physics_process(delta):
-	# Add the gravity.
+		# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+	if is_stunned:
+		stun_label.visible = true
+		return
+	else:
+		stun_label.visible = false
 
 	if position.distance_to(player.position) > attack_range:
 		var dir = (player.position - position).normalized()
@@ -38,7 +46,8 @@ func _on_timer_timeout():
 
 func take_damage(damage_to_take):
 	current_hp -= damage_to_take
-	
+	if is_stunned:
+		damage_to_take *= 1.2
 	if current_hp <= 0:
 		die()
 
