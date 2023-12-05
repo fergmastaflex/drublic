@@ -20,7 +20,7 @@ func try_attack():
 	var bodies = damage_area.get_overlapping_bodies()
 	
 	var projectile = ammo_scene.instantiate()
-	# print(projectile.name)
+
 	add_sibling(projectile)
 	for body in bodies:
 		if body.is_in_group("enemies") && body.has_method("take_damage"):

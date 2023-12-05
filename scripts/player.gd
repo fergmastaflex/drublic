@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var current_hp : int = 10
-var max_hp : int = 10
+var max_hp : int = 100
 var attackRate : float = 1.5
 var jumpCount : int = 0
 var walk_speed : float = 2.8
@@ -100,6 +100,10 @@ func take_damage(damageToTake):
 
 	if current_hp <= 0:
 		die()
+
+func heal(damage_to_heal):
+	current_hp += damage_to_heal
+	ui.update_health_bar(current_hp, max_hp)
 
 func die():
 	get_tree().reload_current_scene()

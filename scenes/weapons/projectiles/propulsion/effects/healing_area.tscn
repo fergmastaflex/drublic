@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://60j6yjao86k0"]
+[gd_scene load_steps=8 format=3 uid="uid://calu6e71ukyoo"]
 
-[ext_resource type="Script" path="res://scripts/explosion_particle.gd" id="1_h3b1m"]
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/propulsion/effects/healing_area.gd" id="1_y7w4p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_63x3o"]
+radius = 0.75
 
 [sub_resource type="Gradient" id="Gradient_gd71u"]
 offsets = PackedFloat32Array(0, 0.758475, 1)
@@ -13,31 +16,40 @@ gradient = SubResource("Gradient_gd71u")
 particle_flag_rotate_y = true
 spread = 180.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_max = 5.0
+initial_velocity_max = 2.0
 angle_min = -90.0
 angle_max = 90.0
 scale_min = 0.2
 color_ramp = SubResource("GradientTexture1D_htnog")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fin2b"]
-albedo_color = Color(1, 0.352941, 0, 1)
+albedo_color = Color(0.227451, 0.780392, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_c4yca"]
 material = SubResource("StandardMaterial3D_fin2b")
 radius = 0.1
 height = 0.2
 
-[node name="ExplosionParticle" type="GPUParticles3D"]
+[node name="HealingArea" type="Area3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_y7w4p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_63x3o")
+
+[node name="EffectTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="BioticsParticle" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0131392, 0.0195487, -0.0153544)
 amount = 100
-lifetime = 0.5
-explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_c1de7")
 draw_pass_1 = SubResource("SphereMesh_c4yca")
-script = ExtResource("1_h3b1m")
 
-[node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 0.52
-one_shot = true
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 
-[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="try_heal_or_hurt"]

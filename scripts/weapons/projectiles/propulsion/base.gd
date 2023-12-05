@@ -9,7 +9,7 @@ var bullet_velocity = 15
 
 @onready var despawn_timer = $DespawnTimer
 @onready var shell = $Shell
-@onready var explosion_particle = preload("res://scenes/weapons/projectiles/propulsion/explosion_particle.tscn")
+@onready var explosion_particle = preload("res://scenes/weapons/projectiles/propulsion/effects/explosion_particle.tscn")
 @onready var main_scene = get_node('/root/MainScene')
 
 func _ready():
@@ -25,4 +25,5 @@ func give_damage(_body):
 	for body in bodies:
 		if body.is_in_group("enemies") && body.has_method("take_damage"):
 			body.take_damage(damage)
+	
 	queue_free()
