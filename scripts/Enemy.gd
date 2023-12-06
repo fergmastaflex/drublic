@@ -16,6 +16,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var player = get_node("/root/MainScene/Player")
 @onready var scrap_scene = preload("res://scenes/scrap.tscn")
 @onready var stun_label = $StunLabel
+@onready var targeted_label = $TargetedLabel
 @onready var health_component = $HealthComponent
 
 func _ready():
@@ -31,6 +32,11 @@ func _physics_process(delta):
 		return
 	else:
 		stun_label.visible = false
+
+	if is_targeted:
+		targeted_label.visible = true
+	else:
+		targeted_label.visible = false
 
 	if position.distance_to(player.position) > attack_range:
 		var dir = (player.position - position).normalized()
@@ -48,14 +54,14 @@ func _on_timer_timeout():
 func take_damage(damage_to_take, crit_chance = 0.0):
 	var crit_check = rng.randf_range(0.0, 100.0)
 	if is_targeted:
-		crit_chance += 15.0
+		crit_chance += 25.0
 
 	if is_stunned:
 		damage_to_take *= 1.2
 		
 	if crit_check < crit_chance:
 		damage_to_take *= 1.5
-	
+	print(damage_to_take)
 	current_hp -= damage_to_take
 
 	if current_hp <= 0:

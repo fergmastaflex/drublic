@@ -29,4 +29,9 @@ visible = false
 outline_modulate = Color(0, 0, 0, 0)
 text = "Stunned!"
 
+[node name="TargetedLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2938, 0)
+visible = false
+text = "Targeted!"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

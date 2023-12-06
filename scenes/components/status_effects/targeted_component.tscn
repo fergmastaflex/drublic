@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq0ewtkq25whe"]
+
+[ext_resource type="Script" path="res://scripts/components/status_effects/targeted_component.gd" id="1_56ywg"]
+
+[node name="TargetedComponent" type="Node"]
+script = ExtResource("1_56ywg")
+
+[node name="TargetedTimer" type="Timer" parent="."]
+wait_time = 10.0
