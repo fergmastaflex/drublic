@@ -5,7 +5,7 @@ extends PropulsionProjectile
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	damage = 5.0
+	damage = 10.0
 
 func give_damage(_body):
 	var healing_area = healing_area_scene.instantiate()

@@ -1,8 +1,6 @@
 extends CharacterBody3D
 class_name Drone
 
-
-# @onready var enemy = get_node("/root/MainScene/Enemy")
 const FABRICATE_AMOUNT = 200
 var follow_distance : float = 2
 var current_scrap = 0

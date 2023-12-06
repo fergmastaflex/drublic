@@ -9,12 +9,14 @@ var attack_range : float = 1.5
 var attack_rate : float = 1.0
 var damage: int = 0
 var is_stunned = false
+var is_targeted = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var player = get_node("/root/MainScene/Player")
 @onready var scrap_scene = preload("res://scenes/scrap.tscn")
 @onready var stun_label = $StunLabel
+@onready var health_component = $HealthComponent
 
 func _ready():
 	add_to_group("enemies")
@@ -39,15 +41,23 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
 func _on_timer_timeout():
 	if position.distance_to(player.position) <= attack_range:
 		player.take_damage(damage)
+	
+func take_damage(damage_to_take, crit_chance = 0.0):
+	var crit_check = rng.randf_range(0.0, 100.0)
+	if is_targeted:
+		crit_chance += 15.0
 
-func take_damage(damage_to_take):
-	current_hp -= damage_to_take
 	if is_stunned:
 		damage_to_take *= 1.2
+		
+	if crit_check < crit_chance:
+		damage_to_take *= 1.5
+	
+	current_hp -= damage_to_take
+
 	if current_hp <= 0:
 		die()
 

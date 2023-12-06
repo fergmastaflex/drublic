@@ -8,5 +8,8 @@ func try_heal_or_hurt():
 	for body in bodies:
 		if body.name == "Player":
 			body.heal(AREA_HEAL_AMOUNT)
-		if body.name == "Enemy":
+		elif body.is_in_group("enemies"):
 			body.take_damage(AREA_DAMAGE)
+
+func destroy():
+	queue_free()

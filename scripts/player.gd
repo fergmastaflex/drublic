@@ -17,6 +17,7 @@ var max_jumps : int = 1
 @onready var holster = $CameraOrbit/Holster
 @onready var drone = get_parent().get_node('Drone')
 @onready var basher = $Basher
+@onready var health_component = $HealthComponent
 
 
 @export var sens_horizontal = 0.5

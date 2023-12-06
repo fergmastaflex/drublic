@@ -39,7 +39,7 @@ script = ExtResource("1_y7w4p")
 shape = SubResource("SphereShape3D_63x3o")
 
 [node name="EffectTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="BioticsParticle" type="GPUParticles3D" parent="."]
@@ -52,4 +52,5 @@ draw_pass_1 = SubResource("SphereMesh_c4yca")
 wait_time = 0.5
 autostart = true
 
+[connection signal="timeout" from="EffectTimer" to="." method="destroy"]
 [connection signal="timeout" from="DamageTimer" to="." method="try_heal_or_hurt"]
