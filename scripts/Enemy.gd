@@ -7,23 +7,26 @@ var rng = RandomNumberGenerator.new()
 var current_hp : float = rng.randf_range(20.0, 50.0)
 var attack_range : float = 1.5
 var attack_rate : float = 1.0
-var damage: int = 0
+var damage: int = 5
 var is_stunned = false
 var is_targeted = false
+var is_defective = false
+var target
+var ally
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var player = get_node("/root/MainScene/Player")
 @onready var scrap_scene = preload("res://scenes/scrap.tscn")
 @onready var stun_label = $StunLabel
 @onready var targeted_label = $TargetedLabel
+@onready var defective_label = $DefectiveLabel
 @onready var health_component = $HealthComponent
 
 func _ready():
 	add_to_group("enemies")
 
 func _physics_process(delta):
-		# Add the gravity.
+	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -37,9 +40,29 @@ func _physics_process(delta):
 		targeted_label.visible = true
 	else:
 		targeted_label.visible = false
+	
+	if is_defective:
+		defective_label.visible = true
+	else:
+		defective_label.visible = false
 
-	if position.distance_to(player.position) > attack_range:
-		var dir = (player.position - position).normalized()
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	var players = get_tree().get_nodes_in_group("players")
+
+	if ally:
+		if enemies:
+			for enemy in enemies:
+				if enemy.is_defective:
+					continue
+				else:
+					target = enemy
+		else:
+			target = ally
+	else:
+		target = players[0]
+
+	if target && position.distance_to(target.position) > attack_range:
+		var dir = (target.position - position).normalized()
 		
 		velocity.x = dir.x * SPEED
 		velocity.y = 0
@@ -48,8 +71,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_timer_timeout():
-	if position.distance_to(player.position) <= attack_range:
-		player.take_damage(damage)
+	if position.distance_to(target.position) <= attack_range:
+		if target == ally:
+			return
+		target.take_damage(damage)
 	
 func take_damage(damage_to_take, crit_chance = 0.0):
 	var crit_check = rng.randf_range(0.0, 100.0)
@@ -61,7 +86,7 @@ func take_damage(damage_to_take, crit_chance = 0.0):
 		
 	if crit_check < crit_chance:
 		damage_to_take *= 1.5
-	print(damage_to_take)
+
 	current_hp -= damage_to_take
 
 	if current_hp <= 0:

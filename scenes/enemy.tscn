@@ -34,4 +34,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2938, 0)
 visible = false
 text = "Targeted!"
 
+[node name="DefectiveLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1277, 0)
+visible = false
+outline_modulate = Color(0, 0, 0, 0)
+text = "Defective!"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

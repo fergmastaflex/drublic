@@ -11,6 +11,7 @@ var bullet_velocity = 15
 @onready var shell = $Shell
 @onready var explosion_particle = preload("res://scenes/weapons/projectiles/propulsion/effects/explosion_particle.tscn")
 @onready var main_scene = get_node('/root/MainScene')
+@onready var weapon = get_parent()
 
 func _ready():
 	set_as_top_level(true)
@@ -23,7 +24,7 @@ func give_damage(_body):
 
 	var bodies = $DamageRadius.get_overlapping_bodies()
 	for body in bodies:
-		if body.is_in_group("enemies") && body.has_method("take_damage"):
+		if body.is_in_group("enemies") && body.has_method("take_damage") && body != weapon.ally:
 			body.take_damage(damage)
 	
 	queue_free()

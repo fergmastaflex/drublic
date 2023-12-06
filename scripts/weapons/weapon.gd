@@ -5,12 +5,14 @@ class_name Weapon
 var last_attack_time : int = 0
 var ammo_scene
 var base_weapon_type : Global.WeaponTypes = Global.WeaponTypes.BASE
+var ally : Enemy
 @export var attack_rate = 0.0
 @export var ammo_type : Global.WeaponTypes
 
 @onready var weapon_animation = $WeaponAnimation
 @onready var holster = get_parent()
 @onready var marker = $Marker3D
+
 
 const PROJECTILE_BASE_FOLDER = "res://scenes/weapons/projectiles/"
 
@@ -26,7 +28,7 @@ func try_attack():
 	if ammo_scene:
 		var projectile = ammo_scene.instantiate()
 		projectile.set_as_top_level(true)
-		add_sibling(projectile)
+		add_child(projectile)
 		projectile.global_transform = marker.global_transform
 		projectile.apply_central_impulse(-self.global_transform.basis.z * projectile.bullet_velocity)
 

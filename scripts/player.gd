@@ -1,6 +1,7 @@
 extends CharacterBody3D
+class_name Player
 
-var current_hp : int = 10
+var current_hp : int = 100
 var max_hp : int = 100
 var attackRate : float = 1.5
 var jumpCount : int = 0
@@ -31,6 +32,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	ui.update_health_bar(current_hp, max_hp)
+	add_to_group("players")
 
 func _input(event):
 	if event is InputEventMouseMotion:

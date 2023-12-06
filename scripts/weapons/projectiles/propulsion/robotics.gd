@@ -16,3 +16,13 @@ func _physics_process(_delta):
 				enemy = target
 	if enemy:
 		velocity_component.apply_force(self, seek_component.run(enemy.global_position, global_position, velocity_component.max_force))
+
+func give_damage(body):
+	if body is Enemy && !body.ally && !weapon.ally:
+		weapon.ally = body
+		body.ally = weapon
+		body.is_defective = true
+	else:
+		super(body)
+	
+	queue_free()

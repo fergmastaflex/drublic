@@ -18,7 +18,7 @@ attack_rate = 0.8
 
 [node name="GrenadeLauncher" parent="." instance=ExtResource("2_sunef")]
 visible = false
-ammo_type = 3
+ammo_type = 4
 
 [node name="Turret" parent="." instance=ExtResource("3_gu7n4")]
 visible = false
