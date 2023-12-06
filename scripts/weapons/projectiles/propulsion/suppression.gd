@@ -1,10 +1,8 @@
 extends PropulsionProjectile
 
+var rng = RandomNumberGenerator.new()
 @onready var stun_component = preload('res://scenes/components/status_effects/stun_component.tscn')
-
-func _ready():
-	super()
-	damage = 10.0
+const STUN_CHANCE = 30.0
 
 func give_damage(_body):
 	var new_explosion_particle = explosion_particle.instantiate()
@@ -15,7 +13,9 @@ func give_damage(_body):
 	var bodies = $DamageRadius.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("enemies") && body.has_method("take_damage"):
-			var stun = stun_component.instantiate()
-			body.add_child(stun)
+			var stun_check = rng.randf_range(0.0, 100.0)
+			if stun_check < STUN_CHANCE:
+				var stun = stun_component.instantiate()
+				body.add_child(stun)
 			body.take_damage(damage)
 	queue_free()

@@ -6,5 +6,6 @@
 script = ExtResource("1_o481p")
 
 [node name="StunTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [connection signal="timeout" from="StunTimer" to="." method="remove_status"]

@@ -1,6 +1,5 @@
 extends Node
 
-
 @onready var parent = get_parent()
 @onready var stun_timer = $StunTimer
 
