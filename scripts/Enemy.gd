@@ -3,16 +3,17 @@ class_name Enemy
 
 const SPEED = 2.0
 
+@export var is_stunned = false
+@export var is_targeted = false
+@export var is_defective = false
+@export var ally : Node3D
+
 var rng = RandomNumberGenerator.new()
 var current_hp : float = rng.randf_range(20.0, 50.0)
 var attack_range : float = 1.5
 var attack_rate : float = 1.0
 var damage: int = 5
-var is_stunned = false
-var is_targeted = false
-var is_defective = false
 var target
-var ally
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -61,7 +62,7 @@ func _physics_process(delta):
 	else:
 		target = players[0]
 
-	if target && position.distance_to(target.position) > attack_range:
+	if is_instance_valid(target) && position.distance_to(target.position) > attack_range:
 		var dir = (target.position - position).normalized()
 		
 		velocity.x = dir.x * SPEED
@@ -72,7 +73,7 @@ func _physics_process(delta):
 
 func _on_timer_timeout():
 	if position.distance_to(target.position) <= attack_range:
-		if target == ally:
+		if is_defective && target is Player:
 			return
 		target.take_damage(damage)
 	
