@@ -3,6 +3,9 @@ extends Area3D
 const AREA_DAMAGE = 5
 const AREA_HEAL_AMOUNT = 2
 
+func _ready():
+	set_as_top_level(true)
+
 func try_heal_or_hurt():
 	var bodies = get_overlapping_bodies()
 	for body in bodies:

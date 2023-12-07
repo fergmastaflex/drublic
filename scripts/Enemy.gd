@@ -88,6 +88,8 @@ func take_damage(damage_to_take, crit_chance = 0.0):
 	if crit_check < crit_chance:
 		damage_to_take *= 1.5
 
+	print(damage_to_take)
+
 	current_hp -= damage_to_take
 
 	if current_hp <= 0:

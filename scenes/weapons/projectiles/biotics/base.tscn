@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv0py4w84abp0"]
-
-[ext_resource type="Script" path="res://scripts/weapons/projectiles/biotics/base.gd" id="1_3e1wu"]
-
-[node name="BioticsProjectile" type="Node3D"]
-script = ExtResource("1_3e1wu")

@@ -1,7 +1,7 @@
 extends RigidBody3D
 class_name PistolProjectileBase
 
-var damage = 3.0
+var damage = 5.0
 var bullet_velocity = 50
 
 func _ready():

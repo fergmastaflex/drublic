@@ -46,7 +46,7 @@ func set_ammo_scene():
 	if ammo_type:
 		ammo_type_name = Global.WeaponTypes.keys()[ammo_type].to_snake_case()
 	else:
-		ammo_type_name = "base"
+		ammo_type_name = str(base_weapon_type_name,"_projectile")
 
 	# Is there a better way here?
 	var scene_path = str(PROJECTILE_BASE_FOLDER, base_weapon_type_name, "/", ammo_type_name, '.tscn')

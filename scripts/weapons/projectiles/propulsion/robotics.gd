@@ -6,6 +6,7 @@ extends PropulsionProjectile
 
 func _init():
 	bullet_velocity = 20
+	damage = 10.0
 
 func _physics_process(_delta):
 	var enemy
@@ -22,7 +23,6 @@ func give_damage(body):
 		weapon.ally = body
 		body.ally = weapon
 		body.is_defective = true
+		queue_free()
 	else:
 		super(body)
-	
-	queue_free()
