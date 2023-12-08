@@ -9,8 +9,6 @@ var walk_speed : float = 2.8
 var run_speed : float = 5.6
 var max_jumps : int = 1
 
-
-
 @onready var camera = get_node("CameraOrbit")
 @onready var animation_player = get_node("Visuals/mixamo_base/AnimationPlayer")
 @onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
@@ -18,8 +16,6 @@ var max_jumps : int = 1
 @onready var holster = $CameraOrbit/Holster
 @onready var drone = get_parent().get_node('Drone')
 @onready var basher = $Basher
-@onready var health_component = $HealthComponent
-
 
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5

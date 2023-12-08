@@ -21,7 +21,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var stun_label = $StunLabel
 @onready var targeted_label = $TargetedLabel
 @onready var defective_label = $DefectiveLabel
-@onready var health_component = $HealthComponent
 
 func _ready():
 	add_to_group("enemies")
@@ -87,8 +86,6 @@ func take_damage(damage_to_take, crit_chance = 0.0):
 		
 	if crit_check < crit_chance:
 		damage_to_take *= 1.5
-
-	print(damage_to_take)
 
 	current_hp -= damage_to_take
 

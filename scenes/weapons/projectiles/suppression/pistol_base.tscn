@@ -24,4 +24,4 @@ shape = SubResource("CapsuleShape3D_gfaj1")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("2_4f74g")
 
-[connection signal="body_entered" from="." to="." method="give_damage"]
+[connection signal="body_entered" from="." to="." method="handle_impact"]

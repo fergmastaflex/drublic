@@ -1,8 +1,9 @@
-extends RigidBody3D
-class_name PistolProjectileBase
+extends ProjectileBase
+class_name PistolProjectile
 
-var damage = 5.0
-var bullet_velocity = 50
+func _init():
+	damage = 5.0
+	bullet_velocity = 50
 
 func _ready():
 	set_as_top_level(true)

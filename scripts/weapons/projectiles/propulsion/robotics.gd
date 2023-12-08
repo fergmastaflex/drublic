@@ -5,8 +5,8 @@ extends PropulsionProjectile
 @onready var seek_component = $SeekComponent
 
 func _init():
-	bullet_velocity = 20
-	damage = 10.0
+	bullet_velocity = 10
+	damage = 25.0
 
 func _physics_process(_delta):
 	var enemy

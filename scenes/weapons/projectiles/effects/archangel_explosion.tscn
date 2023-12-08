@@ -1,6 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://60j6yjao86k0"]
-
-[ext_resource type="Script" path="res://scripts/explosion_particle.gd" id="1_87k8q"]
+[gd_scene load_steps=6 format=3 uid="uid://civv5vvki53wg"]
 
 [sub_resource type="Gradient" id="Gradient_gd71u"]
 offsets = PackedFloat32Array(0, 0.758475, 1)
@@ -13,7 +11,7 @@ gradient = SubResource("Gradient_gd71u")
 particle_flag_rotate_y = true
 spread = 180.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_max = 5.0
+initial_velocity_max = 8.0
 angle_min = -90.0
 angle_max = 90.0
 scale_min = 0.2
@@ -27,17 +25,10 @@ material = SubResource("StandardMaterial3D_fin2b")
 radius = 0.1
 height = 0.2
 
-[node name="ExplosionParticle" type="GPUParticles3D"]
+[node name="ArchangelExplosionParticle" type="GPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0131392, 0.0195487, -0.0153544)
 amount = 100
 lifetime = 0.5
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_c1de7")
 draw_pass_1 = SubResource("SphereMesh_c4yca")
-script = ExtResource("1_87k8q")
-
-[node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 0.52
-one_shot = true
-
-[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
