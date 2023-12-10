@@ -27,8 +27,7 @@ func try_attack():
 	play_animation()
 	if ammo_scene:
 		var projectile = ammo_scene.instantiate()
-		projectile.set_as_top_level(true)
-		add_child(projectile)
+		add_sibling(projectile)
 		projectile.global_transform = marker.global_transform
 		projectile.apply_central_impulse(-self.global_transform.basis.z * projectile.bullet_velocity)
 

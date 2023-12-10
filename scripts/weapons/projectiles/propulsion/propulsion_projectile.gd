@@ -17,7 +17,7 @@ func emit_explosion():
 func give_damage(_body):
 	var bodies = $DamageRadius.get_overlapping_bodies()
 	for body in bodies:
-		if body.is_in_group("enemies") && body.has_method("take_damage") && body != weapon.ally:
+		if body.is_in_group("enemies") && body.has_method("take_damage") && !body.ally:
 			add_status_effect(body)
 			body.take_damage(damage)
 	emit_explosion()

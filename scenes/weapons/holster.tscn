@@ -5,12 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bf7fnxvc7eidl" path="res://scenes/weapons/turret.tscn" id="3_gu7n4"]
 [ext_resource type="PackedScene" uid="uid://bjk06umpbq6dm" path="res://scenes/weapons/sprayer.tscn" id="4_xddyt"]
 [ext_resource type="PackedScene" uid="uid://cp2rptvamvjxr" path="res://scenes/weapons/shield.tscn" id="5_67ooj"]
-[ext_resource type="PackedScene" uid="uid://b0ne7o14fhlpq" path="res://scenes/weapons/sniper.tscn" id="6_ytmns"]
+[ext_resource type="PackedScene" uid="uid://bcvctdbga4jw" path="res://scenes/weapons/sniper.tscn" id="6_ytmns"]
 
-[node name="Holster" type="Node3D" node_paths=PackedStringArray("current_weapon")]
+[node name="Holster" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329576, 0.3, -0.3)
 script = ExtResource("1_hv57d")
-current_weapon = NodePath("GrenadeLauncher")
 
 [node name="Sprayer" parent="." instance=ExtResource("4_xddyt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0304653, 0, 0)

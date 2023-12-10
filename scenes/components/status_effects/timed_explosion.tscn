@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciykppi0qhcpx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5lfny"]
+radius = 4.0
+
+[node name="TimedExplosion" type="Area3D"]
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="DamageCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_5lfny")

@@ -21,7 +21,7 @@ func show_fabricate_message():
 	powerup_alert.text = "Press [F] to fabricate!"
 
 func _on_mob_timer_timeout():
-	if get_tree().get_nodes_in_group("enemies").size() < 3:
+	if get_tree().get_nodes_in_group("enemies").size() < 1:
 		var enemy = enemy_scene.instantiate() # Replace with function body.
 		enemy.position = Vector3(0.0,1.0,0.0)
 		add_child(enemy)

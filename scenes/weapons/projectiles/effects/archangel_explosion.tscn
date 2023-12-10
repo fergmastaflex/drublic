@@ -27,8 +27,10 @@ height = 0.2
 
 [node name="ArchangelExplosionParticle" type="GPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0131392, 0.0195487, -0.0153544)
+emitting = false
 amount = 100
 lifetime = 0.5
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_c1de7")
 draw_pass_1 = SubResource("SphereMesh_c4yca")

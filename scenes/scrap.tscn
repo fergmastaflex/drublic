@@ -16,8 +16,8 @@ height = 0.1
 radius = 0.1
 
 [node name="Scrap" type="RigidBody3D"]
-collision_layer = 25
-collision_mask = 25
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_m3imb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

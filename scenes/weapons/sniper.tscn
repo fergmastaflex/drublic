@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ne7o14fhlpq"]
+[gd_scene load_steps=7 format=3 uid="uid://bcvctdbga4jw"]
 
 [ext_resource type="Script" path="res://scripts/weapons/sniper.gd" id="1_aca7n"]
 [ext_resource type="ArrayMesh" uid="uid://32mmdsmwwgjm" path="res://Models/Weapons/WeaponsPack_V.1/OBJ/SniperRifle_02.obj" id="2_iss4d"]
@@ -60,4 +60,4 @@ libraries = {
 }
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00953718, -0.597673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00953718, -0.689648)

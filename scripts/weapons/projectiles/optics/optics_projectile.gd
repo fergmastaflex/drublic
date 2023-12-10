@@ -6,8 +6,6 @@ func _init():
 	damage = 25
 	
 func give_damage(body):
-	if body.is_in_group("enemies") && body.has_method("take_damage") && body != weapon.ally:
+	if body.is_in_group("enemies") && body.has_method("take_damage") && !body.ally:
 		add_status_effect(body)
 		body.take_damage(damage)
-		
-	queue_free()
