@@ -9,9 +9,9 @@ var ally : Enemy
 @export var attack_rate = 0.0
 @export var ammo_type : Global.WeaponTypes
 
-@onready var weapon_animation = $WeaponAnimation
+@onready var weapon_animation = find_child('WeaponAnimation')
 @onready var holster = get_parent()
-@onready var marker = $Marker3D
+@onready var marker = find_child('Marker3D')
 
 
 const PROJECTILE_BASE_FOLDER = "res://scenes/weapons/projectiles/"

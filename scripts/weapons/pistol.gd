@@ -1,8 +1,5 @@
 extends Weapon
 
-@onready var attack_ray_cast = $AttackRayCast
-var damage = 1
-
 const PISTOL_PROJECTILE_PATH = "res://scenes/weapons/projectiles/suppression/pistol_base.tscn"
 
 func _ready():

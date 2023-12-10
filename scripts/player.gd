@@ -8,6 +8,7 @@ var jumpCount : int = 0
 var walk_speed : float = 2.8
 var run_speed : float = 5.6
 var max_jumps : int = 1
+var follower
 
 @onready var camera = get_node("CameraOrbit")
 @onready var animation_player = get_node("Visuals/mixamo_base/AnimationPlayer")

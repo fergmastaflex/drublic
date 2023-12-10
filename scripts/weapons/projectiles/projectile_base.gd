@@ -9,6 +9,7 @@ var damage : float
 
 @onready var projectile_collider = $ProjectileCollider
 @onready var despawn_timer = find_child('DespawnTimer')
+@onready var player = get_node("/root/MainScene/Player")
 
 # Called when the node enters the scene tree for the first time.
 
@@ -25,8 +26,8 @@ func add_status_effect(body):
 				body.add_child(status_effect)
 
 func handle_impact(body):
-	# visible = false
-	# projectile_collider.set_deferred("disabled", true)
+	visible = false
+	projectile_collider.set_deferred("disabled", true)
 	
 	give_damage(body)
 

@@ -37,5 +37,5 @@ mesh = ExtResource("2_i06xo")
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[connection signal="body_entered" from="." to="." method="give_damage" flags=18]
+[connection signal="body_entered" from="." to="." method="handle_impact"]
 [connection signal="timeout" from="DespawnTimer" to="." method="destroy"]

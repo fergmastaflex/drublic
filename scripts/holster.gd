@@ -8,7 +8,6 @@ class_name Holster
 @onready var shield = $Shield
 @onready var turret = $Turret
 @onready var sprayer = $Sprayer
-@onready var basher = $Basher
 	
 func set_current_weapon(type):
 	match type:

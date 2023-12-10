@@ -71,10 +71,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_timer_timeout():
-	if position.distance_to(target.position) <= attack_range:
-		if is_defective && target is Player:
-			return
-		target.take_damage(damage)
+	if is_instance_valid(target):
+		if position.distance_to(target.position) <= attack_range:
+			if is_defective && target is Player:
+				return
+			target.take_damage(damage)
 	
 func take_damage(damage_to_take, crit_chance = 0.0):
 	var crit_check = rng.randf_range(0.0, 100.0)
