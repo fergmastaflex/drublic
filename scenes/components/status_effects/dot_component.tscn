@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c75c6uvpb350u"]
+
+[ext_resource type="Script" path="res://scripts/components/status_effects/dot_component.gd" id="1_3h8ab"]
+
+[node name="DotComponent" type="Node"]
+script = ExtResource("1_3h8ab")
+
+[node name="DotTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="tree_exiting" from="." to="." method="spawn_healing_area"]
+[connection signal="timeout" from="DotTimer" to="." method="damage_or_heal_parent"]

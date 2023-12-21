@@ -19,7 +19,6 @@ func _process(_delta):
 			explode()
 
 func handle_impact(body):
-	print(body)
 	if attached == false:
 		attached = true
 		attach_point = Area3D.new()
@@ -29,7 +28,6 @@ func handle_impact(body):
 	super(body)
 
 func explode():
-	print('boom')
 	var explosion_particle = explosion_particle_scene.instantiate()
 	get_window().add_child.call_deferred(explosion_particle)
 	explosion_particle.position = position

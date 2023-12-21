@@ -20,10 +20,11 @@ func _ready():
 func add_status_effect(body):
 	if status_effect_scene:
 		var random_number = rng.randf_range(0.0, 100.0)
-		if random_number < status_effect_chance:
-			if body.is_in_group("enemies"):
-				var status_effect = status_effect_scene.instantiate()
-				body.add_child(status_effect)
+		var status_effect = status_effect_scene.instantiate()
+		if random_number <= status_effect_chance && !body.has_node(NodePath(status_effect.name)):
+			body.add_child(status_effect)
+		else:
+			status_effect.queue_free()
 
 func handle_impact(body):
 	visible = false

@@ -7,10 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cp2rptvamvjxr" path="res://scenes/weapons/shield.tscn" id="5_67ooj"]
 [ext_resource type="PackedScene" uid="uid://bcvctdbga4jw" path="res://scenes/weapons/sniper.tscn" id="6_ytmns"]
 
-[node name="Holster" type="Node3D" node_paths=PackedStringArray("current_weapon")]
+[node name="Holster" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329576, 0.3, -0.3)
 script = ExtResource("1_hv57d")
-current_weapon = NodePath("GrenadeLauncher")
 
 [node name="Sprayer" parent="." instance=ExtResource("4_xddyt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0304653, 0, 0)
@@ -20,7 +19,6 @@ attack_rate = 0.8
 [node name="GrenadeLauncher" parent="." instance=ExtResource("2_sunef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302296, 0.27043, -0.239238)
 visible = false
-ammo_type = 4
 
 [node name="Turret" parent="." instance=ExtResource("3_gu7n4")]
 visible = false
