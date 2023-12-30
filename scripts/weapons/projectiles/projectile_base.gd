@@ -30,6 +30,7 @@ func add_status_effect(body):
 func handle_impact(body):
 	visible = false
 	projectile_collider.set_deferred("disabled", true)
+	despawn_timer.start()
 	
 	give_damage(body)
 
