@@ -7,7 +7,7 @@ var ammo_scene
 var base_weapon_type : Global.WeaponTypes = Global.WeaponTypes.BASE
 var ally : Enemy
 @export var attack_rate = 0.0
-@export var ammo_type : Global.WeaponTypes
+@export var ammo_type : Global.WeaponTypes = Global.WeaponTypes.BASE
 
 @onready var weapon_animation = find_child('WeaponAnimation')
 @onready var holster = get_parent()

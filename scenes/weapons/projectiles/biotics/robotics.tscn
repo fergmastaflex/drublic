@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://xmhkrvf3ifg3"]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/biotics/robotics.gd" id="1_t5otv"]
+
+[sub_resource type="Gradient" id="Gradient_txk50"]
+offsets = PackedFloat32Array(0, 0.758475, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.783898, 0.783898, 0.783898, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oomtv"]
+gradient = SubResource("Gradient_txk50")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6u4cv"]
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, -1)
+spread = 15.22
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_min = 0.2
+color_ramp = SubResource("GradientTexture1D_oomtv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3ubw"]
+albedo_color = Color(0, 0.843137, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_m4ono"]
+material = SubResource("StandardMaterial3D_o3ubw")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gb3ui"]
+height = 4.0
+
+[node name="RoboticsProjectile" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_t5otv")
+
+[node name="Particle" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_6u4cv")
+draw_pass_1 = SubResource("SphereMesh_m4ono")
+
+[node name="DamageCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2)
+shape = SubResource("CapsuleShape3D_gb3ui")
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -4)
+collision_mask = 2
+
+[connection signal="timeout" from="DamageTimer" to="." method="give_damage"]
