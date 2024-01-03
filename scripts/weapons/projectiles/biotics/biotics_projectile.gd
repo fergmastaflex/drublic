@@ -1,5 +1,12 @@
-extends ProjectileBase
+extends Area3D
+class_name BioticsProjectile
 
-func _init():
-	damage = 0.5
-	bullet_velocity = 0
+var damage = 5
+@onready var particle = $Particle
+
+func give_damage():
+	var bodies = get_overlapping_bodies()
+	for body in bodies:
+		print(body)
+		if body.is_in_group("enemies") && !body.ally:
+			body.take_damage(damage) 
