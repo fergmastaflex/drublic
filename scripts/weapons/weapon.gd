@@ -37,6 +37,8 @@ func still_attacking() -> bool:
 	return false
 
 func set_ammo_scene():
+	if !is_visible_in_tree():
+		return
 	# If the base weapon is set to "BASE," that means there isn't a weapon present
 	if base_weapon_type == Global.WeaponTypes.BASE:
 		return
@@ -49,6 +51,9 @@ func set_ammo_scene():
 
 	# Is there a better way here?
 	var scene_path = str(PROJECTILE_BASE_FOLDER, base_weapon_type_name, "/", ammo_type_name, '.tscn')
-	
+
+	if ammo_scene && ammo_scene.resource_path == scene_path:
+		return
+
 	ammo_scene = load(scene_path)
 
