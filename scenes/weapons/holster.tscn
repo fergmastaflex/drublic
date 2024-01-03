@@ -14,7 +14,6 @@ script = ExtResource("1_hv57d")
 [node name="Sprayer" parent="." instance=ExtResource("4_xddyt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0304653, 0, 0)
 visible = false
-ammo_type = 0
 
 [node name="GrenadeLauncher" parent="." instance=ExtResource("2_sunef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302296, 0.27043, -0.239238)
