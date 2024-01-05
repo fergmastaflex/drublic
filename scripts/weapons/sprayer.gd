@@ -10,7 +10,6 @@ func _process(_delta):
 			spray = ammo_scene.instantiate()
 			add_child(spray)
 			spray.global_transform = marker.global_transform
-			spray.particle.emitting = true
 	else:
 		if is_instance_valid(spray):
 			spray.queue_free()

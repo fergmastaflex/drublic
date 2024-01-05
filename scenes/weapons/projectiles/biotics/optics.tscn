@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv0py4w84abp0"]
+[gd_scene load_steps=8 format=3 uid="uid://b21ssjis8g6q7"]
 
-[ext_resource type="Script" path="res://scripts/weapons/projectiles/biotics/biotics_projectile.gd" id="1_1youv"]
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/biotics/optics.gd" id="1_kacl8"]
 
 [sub_resource type="Gradient" id="Gradient_txk50"]
 offsets = PackedFloat32Array(0, 0.758475, 1)
@@ -20,7 +20,7 @@ scale_min = 0.2
 color_ramp = SubResource("GradientTexture1D_oomtv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3ubw"]
-albedo_color = Color(1, 0.352941, 0, 1)
+albedo_color = Color(1, 0.278431, 0.282353, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_m4ono"]
 material = SubResource("StandardMaterial3D_o3ubw")
@@ -28,11 +28,12 @@ radius = 0.1
 height = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gb3ui"]
+height = 3.0
 
-[node name="BioticsProjectile" type="Area3D"]
+[node name="OpticsProjectile" type="Area3D"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_1youv")
+script = ExtResource("1_kacl8")
 
 [node name="Particle" type="GPUParticles3D" parent="."]
 amount = 100
@@ -40,7 +41,7 @@ process_material = SubResource("ParticleProcessMaterial_6u4cv")
 draw_pass_1 = SubResource("SphereMesh_m4ono")
 
 [node name="DamageCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.00077)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5)
 shape = SubResource("CapsuleShape3D_gb3ui")
 
 [node name="DamageTimer" type="Timer" parent="."]
