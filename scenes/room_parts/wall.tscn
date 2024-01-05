@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlgw0qwum27w"]
+
+[ext_resource type="Texture2D" uid="uid://dxx35cd1bj66m" path="res://textures/4K-carpet_floor_6_diffuse.jpg" id="1_cln01"]
+[ext_resource type="Texture2D" uid="uid://p8b4v4c4y42j" path="res://textures/4K-carpet_floor_6_normal.jpg" id="2_0houw"]
+[ext_resource type="Texture2D" uid="uid://ct4wu6sqis01c" path="res://textures/4K-carpet_floor_6_glossiness.jpg" id="3_l18j4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38vki"]
+albedo_texture = ExtResource("1_cln01")
+roughness_texture = ExtResource("3_l18j4")
+roughness_texture_channel = 3
+normal_enabled = true
+normal_texture = ExtResource("2_0houw")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7may7"]
+material = SubResource("StandardMaterial3D_38vki")
+size = Vector2(30, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1xqc"]
+size = Vector3(30, 5, 0.5)
+
+[node name="Wall" type="StaticBody3D"]
+collision_layer = 19
+collision_mask = 19
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_7may7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("BoxShape3D_f1xqc")

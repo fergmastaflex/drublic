@@ -14,6 +14,7 @@ func _init():
 func give_damage(body):
 	var healing_area = healing_area_scene.instantiate()
 	get_window().add_child.call_deferred(healing_area)
+	await healing_area.ready
 	healing_area.global_position = global_position
 
 	super(body)

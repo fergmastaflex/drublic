@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c84sqxtuqxs0h"]
+[gd_scene load_steps=6 format=3 uid="uid://c84sqxtuqxs0h"]
 
 [ext_resource type="PackedScene" uid="uid://w06bt5t7rq28" path="res://scenes/player.tscn" id="1_lic0p"]
 [ext_resource type="PackedScene" uid="uid://cft3d6nbppw55" path="res://scenes/ui.tscn" id="3_rwi36"]
 [ext_resource type="PackedScene" uid="uid://bl7dpux13xvf3" path="res://scenes/drone.tscn" id="4_nmak6"]
-[ext_resource type="PackedScene" uid="uid://bn1fqmdv33d30" path="res://scenes/lobby.tscn" id="4_wgfep"]
+[ext_resource type="PackedScene" uid="uid://c8fbe48ufjay8" path="res://scenes/room_parts/floor.tscn" id="4_rc4ii"]
+[ext_resource type="PackedScene" uid="uid://dlgw0qwum27w" path="res://scenes/room_parts/wall.tscn" id="5_bl4km"]
 
 [node name="MainScene" type="Node3D"]
 
@@ -12,7 +13,7 @@
 [node name="UI" parent="CanvasLayer" instance=ExtResource("3_rwi36")]
 
 [node name="Player" parent="." instance=ExtResource("1_lic0p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26164, 2.73876)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18847, 2.73876)
 
 [node name="Enemies" type="Node3D" parent="."]
 
@@ -22,13 +23,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58322, 4.92732)
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.06282, -6.25862)
 
-[node name="Lobby" parent="." instance=ExtResource("4_wgfep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22413, 3.71815, 0.0242968)
-
 [node name="MobTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="Drone" parent="." instance=ExtResource("4_nmak6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 2.5, 0)
+
+[node name="Room" type="Node3D" parent="."]
+
+[node name="Floor" parent="Room" instance=ExtResource("4_rc4ii")]
+
+[node name="SouthWall" parent="Room" instance=ExtResource("5_bl4km")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 15)
+
+[node name="NorthWall" parent="Room" instance=ExtResource("5_bl4km")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.5, -15)
+
+[node name="WestWall" parent="Room" instance=ExtResource("5_bl4km")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 2.5, 0)
+
+[node name="EastWall" parent="Room" instance=ExtResource("5_bl4km")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 2.5, 0)
+
+[node name="Ceiling" parent="Room" instance=ExtResource("4_rc4ii")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 5, 0)
 
 [connection signal="timeout" from="MobTimer" to="CanvasLayer/UI" method="_on_mob_timer_timeout"]
