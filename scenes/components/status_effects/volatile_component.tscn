@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dawsumemldigk"]
+
+[ext_resource type="Script" path="res://scripts/components/status_effects/volatile_component.gd" id="1_hgfte"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_thp0o"]
+radius = 5.0
+
+[node name="VolatileComponent" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_hgfte")
+
+[node name="StatusTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="DamageCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_thp0o")
+
+[connection signal="tree_exiting" from="." to="." method="trigger_explosion"]
+[connection signal="timeout" from="StatusTimer" to="." method="trigger_explosion"]
