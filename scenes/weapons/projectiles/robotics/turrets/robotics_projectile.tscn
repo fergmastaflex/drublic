@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmqmkphw3fdgd"]
 
-[ext_resource type="Script" path="res://scripts/weapons/projectiles/robotics/turrets/base.gd" id="1_t008f"]
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/robotics/turrets/robotics_projectile.gd" id="1_t008f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fdkj5"]
 size = Vector3(0.5, 0.2, 0.5)

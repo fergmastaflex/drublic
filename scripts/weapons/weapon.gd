@@ -37,8 +37,6 @@ func still_attacking() -> bool:
 	return false
 
 func set_ammo_scene():
-	if !is_visible_in_tree():
-		return
 	# If the base weapon is set to "BASE," that means there isn't a weapon present
 	if base_weapon_type == Global.WeaponTypes.BASE:
 		return
