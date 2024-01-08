@@ -13,7 +13,7 @@ func _ready():
 	dot_timer.start()
 
 func damage_or_heal_parent():
-	if total_damage != MAX_DAMAGE:
+	if total_damage <= MAX_DAMAGE:
 		if parent.is_in_group('enemies'):
 			parent.take_damage(DAMAGE_INCREMENT)
 			total_damage += DAMAGE_INCREMENT

@@ -47,18 +47,16 @@ func _init():
 func set_ammo_scene():
 	# If the base weapon is set to "BASE," that means there isn't a weapon present
 	if base_weapon_type == Global.WeaponTypes.BASE:
-		print(base_weapon_type)
 		return
 		
 	var ammo_type_name : String
 	if ammo_type:
 		ammo_type_name = Global.WeaponTypes.keys()[ammo_type].to_snake_case()
 	else:
-		ammo_type_name = "robotics_projectile"
+		ammo_type_name = "robotics_turret"
 
 	var scene_path = str(TURRET_FOLDER_BASE, ammo_type_name, '.tscn')
 
 	if ammo_scene && ammo_scene.resource_path == scene_path:
 		return
-		
 	ammo_scene = load(scene_path)

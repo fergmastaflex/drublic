@@ -1,30 +1,33 @@
 extends Weapon
+class_name RoboticsTurret
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var body = $Body
-@onready var gun = $Body/Gun
+@onready var turret_body = $TurretBody
+@onready var gun = $TurretBody/Gun
 var turret_ammo_scene = load(ROBOTICS_PROJECTILE_BASE_FOLDER)
 
 const ROBOTICS_PROJECTILE_BASE_FOLDER = "res://scenes/weapons/projectiles/robotics/turret_projectiles/base.tscn"
 
 func _ready():
 	set_as_top_level(true)
-	marker = $Body/Gun/Marker3D
+	marker = $TurretBody/Gun/Marker3D
 	attack_rate = 1.0
 
 func _physics_process(delta):
-	print('turret!')
 	# Add the gravity.
-	if not body.is_on_floor():
-		body.velocity.y -= gravity * delta
+	if not turret_body.is_on_floor():
+		turret_body.velocity.y -= gravity * delta
 	
 	var enemies = get_tree().get_nodes_in_group("enemies")
-	if enemies:
+	if enemies && gun:
 		var enemy = enemies[0]
 		gun.look_at(enemy.global_position, Vector3.UP)
 		try_attack()
 	
-	body.move_and_slide()
+	turret_body.move_and_slide()
+
+func set_ammo_scene():
+	pass
 
 func try_attack():
 	if !is_visible_in_tree() || still_attacking():

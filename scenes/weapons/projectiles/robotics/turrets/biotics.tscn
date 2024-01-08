@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy4k5rn1eveg2"]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/robotics/turrets/biotics.gd" id="1_axdec"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fdkj5"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trrnt"]
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4ka3k"]
+height = 1.0
+radius = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qlvj0"]
+radius = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_dawsx"]
+radius = 0.2
+height = 0.4
+
+[node name="BioticsTurret" type="Node3D"]
+script = ExtResource("1_axdec")
+
+[node name="TurretBody" type="CharacterBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TurretBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0910389, 0)
+mesh = SubResource("BoxMesh_fdkj5")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TurretBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.351457, 0)
+mesh = SubResource("BoxMesh_trrnt")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TurretBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_4ka3k")
+
+[node name="BioticsAura" type="Area3D" parent="TurretBody"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TurretBody/BioticsAura"]
+shape = SubResource("SphereShape3D_qlvj0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="TurretBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.660652, 0)
+mesh = SubResource("SphereMesh_dawsx")
+
+[node name="AuraTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="AuraTimer" to="." method="heal_or_damage"]
