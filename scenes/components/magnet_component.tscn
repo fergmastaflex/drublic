@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cicgbhnrlqfk6"]
+
+[ext_resource type="Script" path="res://scripts/components/magnet_component.gd" id="1_vkg2e"]
+[ext_resource type="PackedScene" uid="uid://cvrqllxqk20od" path="res://scenes/components/velocity_component_rb.tscn" id="1_yy3fv"]
+[ext_resource type="PackedScene" uid="uid://r2jqg6j1e61d" path="res://scenes/components/seek_component.tscn" id="2_h3x5h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g07ig"]
+radius = 2.0
+
+[node name="MagnetComponent" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vkg2e")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("1_yy3fv")]
+max_force = 10.0
+
+[node name="SeekComponent" parent="." instance=ExtResource("2_h3x5h")]
+
+[node name="MagnetCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_g07ig")

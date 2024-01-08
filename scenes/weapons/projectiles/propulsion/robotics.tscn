@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://yv5wmik1t3p4"]
+[gd_scene load_steps=6 format=3 uid="uid://yv5wmik1t3p4"]
 
 [ext_resource type="ArrayMesh" uid="uid://b2udg1a0ewd6k" path="res://Models/Weapons/ammo_pistol.obj" id="1_37lvl"]
 [ext_resource type="Script" path="res://scripts/weapons/projectiles/propulsion/robotics.gd" id="1_i6mt2"]
-[ext_resource type="PackedScene" uid="uid://cvrqllxqk20od" path="res://scenes/components/velocity_component_rb.tscn" id="3_w0n00"]
-[ext_resource type="PackedScene" uid="uid://r2jqg6j1e61d" path="res://scenes/components/seek_component.tscn" id="4_fn1fq"]
+[ext_resource type="PackedScene" uid="uid://cicgbhnrlqfk6" path="res://scenes/components/magnet_component.tscn" id="3_pd1x6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tdbp8"]
 radius = 1.25
@@ -12,10 +11,7 @@ radius = 1.25
 radius = 0.1
 height = 0.3
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_c2m07"]
-radius = 2.0
-
-[node name="MagnetGrenade" type="RigidBody3D"]
+[node name="PropulsionRobiticsMod" type="RigidBody3D"]
 collision_layer = 0
 collision_mask = 2
 mass = 0.1
@@ -39,20 +35,10 @@ shape = SubResource("CapsuleShape3D_gfaj1")
 transform = Transform3D(15, 0, 0, 0, -6.55671e-07, 15, 0, -15, -6.55671e-07, 0, 0, 0)
 mesh = ExtResource("1_37lvl")
 
-[node name="MagnetRadius" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="MagnetCollider" type="CollisionShape3D" parent="MagnetRadius"]
-shape = SubResource("SphereShape3D_c2m07")
-
-[node name="VelocityComponentRb" parent="." instance=ExtResource("3_w0n00")]
-max_force = 10.0
-
-[node name="SeekComponent" parent="." instance=ExtResource("4_fn1fq")]
-
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="MagnetComponent" parent="." instance=ExtResource("3_pd1x6")]
 
 [connection signal="body_entered" from="." to="." method="handle_impact"]
 [connection signal="timeout" from="DespawnTimer" to="." method="destroy"]
