@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmqmkphw3fdgd"]
+[gd_scene load_steps=10 format=3 uid="uid://dt8777gppij64"]
 
-[ext_resource type="Script" path="res://scripts/weapons/projectiles/robotics/turrets/robotics_turret.gd" id="1_t008f"]
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/robotics/turrets/optics.gd" id="1_lh2yd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fdkj5"]
 size = Vector3(0.5, 0.2, 0.5)
@@ -20,8 +20,19 @@ size = Vector3(0.1, 0.1, 0.8)
 height = 1.0
 radius = 0.4
 
-[node name="BaseTurret" type="Node3D"]
-script = ExtResource("1_t008f")
+[sub_resource type="SphereShape3D" id="SphereShape3D_ctee0"]
+radius = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_6xdcb"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsxwb"]
+transparency = 1
+albedo_color = Color(1, 1, 0.145098, 0.0470588)
+
+[node name="OpticsTurret" type="Node3D"]
+script = ExtResource("1_lh2yd")
 
 [node name="TurretBody" type="CharacterBody3D" parent="."]
 
@@ -51,3 +62,16 @@ transform = Transform3D(-0.00289719, 0, 0.999997, 0, 1, 0, -0.999997, 0, -0.0028
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TurretBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_4ka3k")
+
+[node name="OpticsAura" type="Area3D" parent="TurretBody"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TurretBody/OpticsAura"]
+shape = SubResource("SphereShape3D_ctee0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TurretBody/OpticsAura"]
+mesh = SubResource("SphereMesh_6xdcb")
+surface_material_override/0 = SubResource("StandardMaterial3D_tsxwb")
+
+[connection signal="body_entered" from="TurretBody/OpticsAura" to="." method="add_magnet_component"]

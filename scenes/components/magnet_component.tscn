@@ -13,7 +13,7 @@ collision_mask = 2
 script = ExtResource("1_vkg2e")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("1_yy3fv")]
-max_force = 10.0
+max_force = 30.0
 
 [node name="SeekComponent" parent="." instance=ExtResource("2_h3x5h")]
 

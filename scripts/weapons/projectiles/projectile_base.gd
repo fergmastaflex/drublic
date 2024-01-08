@@ -1,7 +1,7 @@
 extends RigidBody3D
 class_name ProjectileBase
 
-var bullet_velocity : int
+var bullet_velocity : float
 var rng = RandomNumberGenerator.new()
 var status_effect_chance = 0.0
 var status_effect_scene : PackedScene
@@ -15,6 +15,7 @@ var damage : float
 
 func _ready():
 	continuous_cd = true
+	add_to_group("player_projectiles")
 	set_as_top_level(true)
 
 func add_status_effect(body):

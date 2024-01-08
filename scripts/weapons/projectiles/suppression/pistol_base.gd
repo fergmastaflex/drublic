@@ -3,10 +3,7 @@ class_name PistolProjectile
 
 func _init():
 	damage = 5.0
-	bullet_velocity = 50
-
-func _ready():
-	set_as_top_level(true)
+	bullet_velocity = 50.0
 	
 func give_damage(body):
 	if body.is_in_group("enemies") && body.has_method("take_damage"):
