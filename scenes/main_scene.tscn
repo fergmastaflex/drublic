@@ -24,9 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58322, 4.92732)
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.06282, -6.25862)
 
-[node name="MobTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="Drone" parent="." instance=ExtResource("4_nmak6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 2.5, 0)
 
@@ -50,5 +47,3 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 2.
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 5, 0)
 
 [node name="MeleeSpawner" parent="." instance=ExtResource("6_60710")]
-
-[connection signal="timeout" from="MobTimer" to="CanvasLayer/UI" method="_on_mob_timer_timeout"]
