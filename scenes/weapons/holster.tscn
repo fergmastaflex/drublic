@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cp2rptvamvjxr" path="res://scenes/weapons/shield.tscn" id="5_67ooj"]
 [ext_resource type="PackedScene" uid="uid://bcvctdbga4jw" path="res://scenes/weapons/sniper.tscn" id="6_ytmns"]
 
-[node name="Holster" type="Node3D"]
+[node name="Holster" type="Node3D" node_paths=PackedStringArray("current_weapon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329576, 0.3, -0.3)
 script = ExtResource("1_hv57d")
+current_weapon = NodePath("Sprayer")
 
 [node name="Sprayer" parent="." instance=ExtResource("4_xddyt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0304653, 0, 0)

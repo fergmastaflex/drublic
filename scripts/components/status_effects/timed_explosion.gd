@@ -14,9 +14,13 @@ func explode():
 	for body in bodies:
 		if body.is_in_group("enemies") && body.has_method("take_damage") && !body.ally:
 			body.take_damage(damage)
+	emit_explosion()
 
 func emit_explosion():
 	var new_explosion_particle = explosion_particle.instantiate()
 	get_window().add_child.call_deferred(new_explosion_particle)
 	new_explosion_particle.position = position
 	new_explosion_particle.emitting = true
+
+func destroy():
+	queue_free()

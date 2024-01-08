@@ -6,6 +6,7 @@ const SPEED = 2.0
 @export var is_stunned = false
 @export var is_targeted = false
 @export var is_defective = false
+@export var is_volatile = false
 @export var ally : Node3D
 
 var rng = RandomNumberGenerator.new()
@@ -21,6 +22,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var stun_label = $StunLabel
 @onready var targeted_label = $TargetedLabel
 @onready var defective_label = $DefectiveLabel
+@onready var volatile_label = $VolatileLabel
 
 func _ready():
 	add_to_group("enemies")
@@ -35,6 +37,11 @@ func _physics_process(delta):
 		return
 	else:
 		stun_label.visible = false
+	
+	if is_volatile:
+		volatile_label.visible = true
+	else:
+		volatile_label.visible = false
 
 	if is_targeted:
 		targeted_label.visible = true
