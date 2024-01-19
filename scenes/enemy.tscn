@@ -46,4 +46,8 @@ visible = false
 outline_modulate = Color(0, 0, 0, 0)
 text = "Volatile!"
 
+[node name="FreezeLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22128, 0)
+visible = false
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
