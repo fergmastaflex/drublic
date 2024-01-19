@@ -1,20 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp2rptvamvjxr"]
+[gd_scene load_steps=4 format=3 uid="uid://cp2rptvamvjxr"]
 
 [ext_resource type="Script" path="res://scripts/weapons/shield.gd" id="1_758uk"]
 [ext_resource type="PackedScene" uid="uid://chyvffj2sgmhn" path="res://scenes/weapons/pistol.tscn" id="2_41w6s"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ocqqc"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_mnkmx"]
-radius = 3.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_4dwio"]
-radius = 3.0
-height = 6.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrpyv"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.12549)
 
 [node name="Shield" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128589, 0, 0)
@@ -26,16 +15,7 @@ mesh = SubResource("BoxMesh_ocqqc")
 
 [node name="Pistol" parent="." instance=ExtResource("2_41w6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.465872, 0, 0)
-attack_rate = 0.5
+attack_rate = 0.2
 
-[node name="Aura" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24)
-collision_layer = 2
-collision_mask = 2
-
-[node name="AuraCollider" type="CollisionShape3D" parent="Aura"]
-shape = SubResource("SphereShape3D_mnkmx")
-
-[node name="AuraMesh" type="MeshInstance3D" parent="Aura"]
-mesh = SubResource("SphereMesh_4dwio")
-surface_material_override/0 = SubResource("StandardMaterial3D_yrpyv")
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2307)
