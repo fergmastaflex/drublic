@@ -6,10 +6,11 @@ class_name Enemy
 @export var is_defective = false
 @export var is_volatile = false
 @export var is_freezing = false
+@export var is_infected = false
 @export var ally : Node3D
 
 var rng = RandomNumberGenerator.new()
-var current_hp : float = rng.randf_range(20.0, 50.0)
+var current_hp : float = rng.randi_range(20, 50)
 var attack_range : float = 1.5
 var attack_rate : float = 1.0
 var damage: int = 5
@@ -25,6 +26,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var defective_label = $DefectiveLabel
 @onready var volatile_label = $VolatileLabel
 @onready var freeze_label = $FreezeLabel
+@onready var infected_label = $InfectedLabel
 
 func _ready():
 	add_to_group("enemies")
@@ -69,6 +71,11 @@ func _physics_process(delta):
 			defective_label.visible = true
 		else:
 			defective_label.visible = false
+
+		if is_infected:
+			infected_label.visible = true
+		else:
+			infected_label.visible = false
 	
 		if is_freezing:
 			var freeze_component = get_node('freeze_component')
@@ -77,7 +84,6 @@ func _physics_process(delta):
 
 	if is_instance_valid(target) && position.distance_to(target.position) > attack_range:
 		var dir = (target.position - position).normalized()
-		print(current_movement_speed)
 		velocity.x = dir.x * current_movement_speed
 		velocity.y = 0
 		velocity.z = dir.z * current_movement_speed
@@ -106,6 +112,9 @@ func take_damage(damage_to_take, crit_chance = 0.0):
 
 	if current_hp <= 0:
 		die()
+
+func heal(damage_to_heal):
+	current_hp += damage_to_heal
 
 func die():
 	#drop between 1 and 3 scrap

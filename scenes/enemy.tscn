@@ -50,4 +50,9 @@ text = "Volatile!"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22128, 0)
 visible = false
 
+[node name="InfectedLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32308, 0)
+visible = false
+text = "Infected!"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

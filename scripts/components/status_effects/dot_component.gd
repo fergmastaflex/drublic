@@ -6,11 +6,12 @@ extends Node
 
 var total_damage = 0
 
-const DAMAGE_INCREMENT = 2
+const DAMAGE_INCREMENT = 1
 const MAX_DAMAGE = 100
 
 func _ready():
 	dot_timer.start()
+	parent.is_infected = true
 
 func damage_or_heal_parent():
 	if total_damage <= MAX_DAMAGE:

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://gwvel2aomaap"]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/suppression/biotics.gd" id="1_4v6r0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8dg1y"]
+radius = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80gs4"]
+transparency = 1
+albedo_color = Color(0.137255, 1, 0.172549, 0.0980392)
+
+[sub_resource type="SphereMesh" id="SphereMesh_eq12j"]
+material = SubResource("StandardMaterial3D_80gs4")
+flip_faces = true
+radius = 5.0
+height = 10.0
+
+[node name="BioticsProjectile" type="Area3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_4v6r0")
+
+[node name="AuraCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8dg1y")
+
+[node name="AuraMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_eq12j")
+
+[node name="AuraTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="AuraTimer" to="." method="heal_or_hurt"]

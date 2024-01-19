@@ -1,25 +1,3 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3d8m0c131omu"]
+[gd_scene format=3 uid="uid://d3d8m0c131omu"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_tdbp8"]
-radius = 2.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_cgfiv"]
-radius = 2.0
-height = 4.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gobef"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.12549)
-
-[node name="SuppressionProjectile" type="Node3D"]
-
-[node name="Aura" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="AuraCollider" type="CollisionShape3D" parent="Aura"]
-shape = SubResource("SphereShape3D_tdbp8")
-
-[node name="AuraMesh" type="MeshInstance3D" parent="Aura"]
-mesh = SubResource("SphereMesh_cgfiv")
-surface_material_override/0 = SubResource("StandardMaterial3D_gobef")
+[node name="SuppressionProjectile" type="Area3D"]
