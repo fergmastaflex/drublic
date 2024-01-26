@@ -19,3 +19,11 @@ attack_rate = 0.2
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2307)
+
+[node name="ChargeTimer" type="Timer" parent="."]
+
+[node name="DrainTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="ChargeTimer" to="." method="charge"]
+[connection signal="timeout" from="DrainTimer" to="." method="drain_charge"]

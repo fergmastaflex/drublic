@@ -103,6 +103,8 @@ func take_damage(damageToTake):
 
 func heal(damage_to_heal):
 	current_hp += damage_to_heal
+	if current_hp > max_hp:
+		current_hp = max_hp
 	ui.update_health_bar(current_hp, max_hp)
 
 func die():

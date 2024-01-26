@@ -25,9 +25,3 @@ shape = SubResource("SphereShape3D_8dg1y")
 
 [node name="AuraMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_eq12j")
-
-[node name="AuraTimer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
-
-[connection signal="timeout" from="AuraTimer" to="." method="heal_or_hurt"]
