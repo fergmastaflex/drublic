@@ -26,6 +26,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175757, 0.134227, 0)
 visible = false
 attack_rate = 0.5
+ammo_type = 1
 
 [node name="Sniper" parent="." instance=ExtResource("6_ytmns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.304927, 0.36014, 0)
