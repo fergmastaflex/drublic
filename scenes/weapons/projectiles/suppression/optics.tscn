@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch1wnxxpl404m"]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/suppression/optics.gd" id="1_plef7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d07c1"]
+radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80gs4"]
+transparency = 1
+albedo_color = Color(1, 0.776471, 0.639216, 0.0980392)
+
+[sub_resource type="SphereMesh" id="SphereMesh_llmyn"]
+material = SubResource("StandardMaterial3D_80gs4")
+flip_faces = true
+radius = 10.0
+height = 15.0
+
+[node name="OpticsProjectile" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_plef7")
+
+[node name="AuraCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_d07c1")
+
+[node name="AuraMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_llmyn")

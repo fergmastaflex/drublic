@@ -5,12 +5,12 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_8dg1y"]
 radius = 5.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80gs4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdxjs"]
 transparency = 1
 albedo_color = Color(0.137255, 1, 0.172549, 0.0980392)
 
 [sub_resource type="SphereMesh" id="SphereMesh_eq12j"]
-material = SubResource("StandardMaterial3D_80gs4")
+material = SubResource("StandardMaterial3D_kdxjs")
 flip_faces = true
 radius = 5.0
 height = 10.0
