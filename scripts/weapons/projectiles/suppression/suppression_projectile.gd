@@ -13,6 +13,12 @@ var max_charge = 100
 var on_cooldown = false
 
 func _process(_delta):
+	handle_aura()
+
+func perform_aura_action():
+	pass
+
+func handle_aura():
 	if current_charge <= 0:
 		current_charge = 0
 		visible = false
@@ -35,6 +41,3 @@ func _process(_delta):
 				current_charge += charge_increment
 			if current_charge > max_charge:
 				current_charge = max_charge
-
-func perform_aura_action():
-	pass

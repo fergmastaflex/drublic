@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhu4anb7fovpr"]
+
+[ext_resource type="Script" path="res://scripts/weapons/projectiles/suppression/propulsion.gd" id="1_g5hrr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ssicu"]
+size = Vector3(7, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1her"]
+size = Vector3(7, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hcm36"]
+size = Vector3(7, 2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wltc2"]
+transparency = 1
+albedo_color = Color(0.129412, 1, 1, 0.117647)
+
+[node name="PropulstionProjectile" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_g5hrr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -1.5)
+shape = SubResource("BoxShape3D_ssicu")
+
+[node name="StatusEffectTimer" type="Timer" parent="."]
+
+[node name="ParticleWall" type="StaticBody3D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParticleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.5)
+shape = SubResource("BoxShape3D_p1her")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ParticleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.5)
+mesh = SubResource("BoxMesh_hcm36")
+surface_material_override/0 = SubResource("StandardMaterial3D_wltc2")
