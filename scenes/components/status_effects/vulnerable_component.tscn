@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://jl1w8l1p06xa"]
+
+[ext_resource type="Script" path="res://scripts/components/status_effects/vulnerable_component.gd" id="1_t5t0p"]
+
+[node name="VulnerableComponent" type="Node"]
+script = ExtResource("1_t5t0p")
+
+[node name="VulnerableTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="VulnerableTimer" to="." method="remove_status"]
